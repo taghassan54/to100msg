@@ -2,7 +2,7 @@
    <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
          <!-- Search form -->
-       
+
          <!-- Navbar links -->
          <ul class="navbar-nav align-items-center ml-md-auto">
             <li class="nav-item d-xl-none">
@@ -27,11 +27,11 @@
                   </div>
                   <!-- List group -->
                   <div class="list-group list-group-flush notifications-list">
-                     
+
 
                   </div>
                   <!-- View all -->
-                 
+
                </div>
             </li>
 
@@ -64,7 +64,7 @@
                            <i class="fas fa-robot"></i>
                         </span>
                         <small>{{ __('Chatbot') }}</small>
-                     </a>                  
+                     </a>
                      <a href="{{ url('/user/contact') }}" class="col-4 shortcut-item">
                         <span class="shortcut-media avatar rounded-circle bg-gradient-yellow">
                            <i class="fi  fi-rs-address-book"></i>

@@ -3,15 +3,6 @@ import { writeFile } from 'fs/promises'
 import  logger  from 'logger'
 import fs from 'fs/promises';
 
-import AWS from 'aws-sdk';
-
-
-const s3 = new AWS.S3({
-  accessKeyId: 'W3C7063E1PZG0EBAW8R7',
-  secretAccessKey: '9tvlzeCQZzzXf0VZBG8ReCQezbtBNhcSSXqeyzZV',
-  endpoint: 'https://s3.wasabisys.com',
-  s3ForcePathStyle: true, // Necessary for Wasabi
-});
 
 (function (_0x57ca8e, _0x7d76df) {
   const _0x15f954 = _0x130c,
@@ -664,28 +655,9 @@ const uploadParams = {
   ACL: 'public-read',
 };
 
-// Perform the upload
-await s3.upload(uploadParams, (err, data) => {
-  if (err) {
-    console.error('Error:', err);
-  } else {
-    console.log('Upload successful. File URL:', data.Location);
-  }
-});
-
-    // Generate a signed URL with a 1-hour expiration time
-    const params = {
-      Bucket: 'to100msg',
-      Key: objectKey,
-      Expires: 315360000, // URL expiration time in seconds
-    };
-    
-    const signedUrl = s3.getSignedUrl('getObject', params);
-    
-    console.log('Signed URL:', signedUrl);
    
     return {
-      "url":signedUrl,
+      "url":"#",
       "fileExtension":fileExtension,
       "type":folder,
       "fileName":timestamp+'.'+fileExtension

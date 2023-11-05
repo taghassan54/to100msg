@@ -31,8 +31,8 @@
 <th class="p-2 text-center battery" style="display:none"></th>
 <th class="p-2 text-center">API URL</th>
 <th class="p-2 text-center">Device Id</th>
+<th class="p-2 text-center">App Key</th>
 <th class="p-2 text-center">Auth Key</th>
-<th class="p-2 text-center">Auth Token</th>
 </tr>
 </thead>
 <tbody>
@@ -84,8 +84,8 @@
 
                     <div class="card-body">
                         <div class="">
-             
-    
+
+
                             <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
                               <li class="nav-item" role="presentation">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" data-target="#curl" type="button" role="tab" aria-controls="home" aria-selected="true">cUrl</a>
@@ -104,9 +104,9 @@
 <div class="tab-content mt-4 mb-4" id="myTabContent">
 <div class="tab-pane fade show active" id="curl" role="tabpanel" aria-labelledby="home-tab">
     <div class="language-markup">
-        
+
 <pre class="language-markup" tabindex="0">
-<h3>{{ __('Text Message Only') }}</h3>     
+<h3>{{ __('Text Message Only') }}</h3>
 curl --location --request POST '{{ $url }}' \
 --form 'deviceId="{{ $deviceId }}"' \
 --form 'appkey="{{ $key }}"' \
@@ -117,9 +117,9 @@ curl --location --request POST '{{ $url }}' \
 </div>
 <hr>
 <div class="language-markup">
-        
+
 <pre class="language-markup" tabindex="0">
-<h3>{{ __('Text Message with file') }}</h3>     
+<h3>{{ __('Text Message with file') }}</h3>
 curl --location --request POST '{{ $url }}' \
 --form 'deviceId="{{ $deviceId }}"' \
 --form 'appkey="{{ $key }}"' \
@@ -154,7 +154,7 @@ curl --location --request POST '{{ $url }}' \
 <div class="language-markup">
     <pre class="language-markup" tabindex="2">
 <code class="language-markup">
-<h3>{{ __('Template Only') }}</h3>    
+<h3>{{ __('Template Only') }}</h3>
 curl --location --request POST '{{ $url }}' \
 --form 'deviceId="{{ $deviceId }}"' \
 --form 'appkey="{{ $key }}"' \
@@ -172,7 +172,7 @@ curl --location --request POST '{{ $url }}' \
 
   <div class="tab-pane fade" id="php" role="tabpanel" aria-labelledby="profile-tab">
       <pre class="language-markup" tabindex="1">
-<h3>{{ __('Text Message Only') }}</h3>   
+<h3>{{ __('Text Message Only') }}</h3>
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -185,7 +185,7 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS => array(
-  'deviceId' => '{{ $deviceId }}',    
+  'deviceId' => '{{ $deviceId }}',
   'appkey' => '{{ $key }}',
   'authkey' => '{{ Auth::user()->authkey }}',
   'to' => 'RECEIVER_NUMBER',
@@ -201,7 +201,7 @@ echo $response;
 </pre>
 <hr>
 <pre class="language-markup" tabindex="1">
-<h3>{{ __('Text Message with file') }}</h3>   
+<h3>{{ __('Text Message with file') }}</h3>
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -215,7 +215,7 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS => array(
   'appkey' => '{{ $key }}',
-  'deviceId' => '{{ $deviceId }}',   
+  'deviceId' => '{{ $deviceId }}',
   'authkey' => '{{ Auth::user()->authkey }}',
   'to' => 'RECEIVER_NUMBER',
   'message' => 'Example message',
@@ -252,7 +252,7 @@ echo $response;
 </div>
 <hr>
  <pre class="language-markup" tabindex="1">
-<h3>{{ __('Template Message Only') }}</h3>   
+<h3>{{ __('Template Message Only') }}</h3>
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -265,13 +265,13 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS => array(
-  'deviceId' => '{{ $deviceId }}', 
+  'deviceId' => '{{ $deviceId }}',
   'appkey' => '{{ $key }}',
   'authkey' => '{{ Auth::user()->authkey }}',
   'to' => 'RECEIVER_NUMBER',
   'template_id' => 'TEMPLATE_ID',
   'variables' => array(
-    '{variableKey1}' => 'Jhone', 
+    '{variableKey1}' => 'Jhone',
     '{variableKey2}' => 'replaceable value'
    )
   ),
@@ -289,7 +289,7 @@ echo $response;
   <div class="tab-pane fade" id="nodejs" role="tabpanel" aria-labelledby="contact-tab">
 <pre class="language-markup" tabindex="2">
 <code class="language-markup">
-<h3>{{ __('Text Message Only') }}</h3>    
+<h3>{{ __('Text Message Only') }}</h3>
 var request = require('request');
 var options = {
   'method': 'POST',
@@ -297,7 +297,7 @@ var options = {
   'headers': {
   },
   formData: {
-    'deviceId' : '{{ $deviceId }}', 
+    'deviceId' : '{{ $deviceId }}',
     'appkey': '{{ $key }}',
     'authkey': '{{ Auth::user()->authkey }}',
     'to': 'RECEIVER_NUMBER',
@@ -314,7 +314,7 @@ request(options, function (error, response) {
 <hr>
 <pre class="language-markup" tabindex="2">
 <code class="language-markup">
-<h3>{{ __('Text Message With File') }}</h3>    
+<h3>{{ __('Text Message With File') }}</h3>
 var request = require('request');
 var options = {
   'method': 'POST',
@@ -322,7 +322,7 @@ var options = {
   'headers': {
   },
   formData: {
-    'deviceId' : '{{ $deviceId }}', 
+    'deviceId' : '{{ $deviceId }}',
     'appkey': '{{ $key }}',
     'authkey': '{{ Auth::user()->authkey }}',
     'to': 'RECEIVER_NUMBER',
@@ -362,7 +362,7 @@ request(options, function (error, response) {
 <hr>
 <pre class="language-markup" tabindex="2">
 <code class="language-markup">
-<h3>{{ __('Template Only') }}</h3>    
+<h3>{{ __('Template Only') }}</h3>
 var request = require('request');
 var options = {
   'method': 'POST',
@@ -370,7 +370,7 @@ var options = {
   'headers': {
   },
   formData: {
-    'deviceId' : '{{ $deviceId }}', 
+    'deviceId' : '{{ $deviceId }}',
     'appkey': '{{ $key }}',
     'authkey': '{{ Auth::user()->authkey }}',
     'to': 'RECEIVER_NUMBER',
@@ -398,7 +398,7 @@ import requests
 url = "{{ $url }}"
 
 payload={
-'deviceId' : '{{ $deviceId }}', 
+'deviceId' : '{{ $deviceId }}',
 'appkey': '{{ $key }}',
 'authkey': '{{ Auth::user()->authkey }}',
 'to': 'RECEIVER_NUMBER',
@@ -460,7 +460,7 @@ print(response.text)
                     </div>
                 </div>
 
-                
+
 
                 <div class="card">
                     <div class="card-header">
