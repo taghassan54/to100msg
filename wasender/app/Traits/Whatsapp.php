@@ -52,13 +52,15 @@ trait Whatsapp
         try {
             $response=Http::post($whatsServer.'/chats/send?id='.$session_id,$body);
             $status=$response->status();
-
+            $responseBody=json_decode($response->body());
             if ($status != 200) {
-                $responseBody=json_decode($response->body());
                 $responseData['message']=$responseBody->message;
                 $responseData['status']=$status;
             }
             else{
+
+                $responseData['message']=$responseBody->message;
+                $responseData['data']=$responseBody->data;
                 $responseData['status'] = 200;
             }
 
@@ -473,7 +475,9 @@ trait Whatsapp
         $log->to = $data['to'] ?? null;
         $log->template_id = $data['template_id'] ?? null;
         $log->type = $data['type'] ?? null;
+        $log->message_id = $data['message_id'] ?? null;
         $log->messageTimestamp = $data['messageTimestamp'] ?? null;
+        $log->message_content = $data['message_content'] ?? null;
         $log->save();
     }
 

@@ -453,7 +453,8 @@ const getSession = (_0x41e565) => {
    
           if (_0x15e505[_0x4aa9bb(0x1a6)] == 0xc8) {
             const _0x176245 = getSession(_0x15e505["data"][_0x4aa9bb(0x1d7)]);
-            console["log"](_0x15e505["data"]);
+            // console["log"](_0x15e505["data"]);
+            console["log"](_0x176245);
             sendMessage(
               _0x176245,
               _0x15e505[_0x4aa9bb(0x1ec)]["receiver"],
@@ -512,6 +513,7 @@ const getSession = (_0x41e565) => {
   sendMessage = async (_0x1b6c74, _0x51ad7b, _0x425596, _0x2a2df4 = 0x3e8) => {
     const _0x1c2889 = _0x130c;
     try {
+
       return (
         await delay(parseInt(_0x2a2df4)),
         _0x1b6c74[_0x1c2889(0x1c0)](_0x51ad7b, _0x425596)

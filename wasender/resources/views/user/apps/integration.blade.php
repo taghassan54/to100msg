@@ -33,6 +33,7 @@
 <th class="p-2 text-center">Device Id</th>
 <th class="p-2 text-center">App Key</th>
 <th class="p-2 text-center">Auth Key</th>
+<th class="p-2 text-center">User Auth Token</th>
 </tr>
 </thead>
 <tbody>
@@ -66,6 +67,17 @@
 </span>
 </div>
 </td>
+
+    <td class="p-2 text-center">
+        <div class="input-group dltr">
+            <input type="text" class="form-control" readonly="" value="{{\Auth::user()->authkey}}">
+            <span class="input-group-append">
+<button class="btn btn-light  js-copy copy-button"  type="button" data-copy="{{\Auth::user()->authkey}}"><i class="far fa-copy"></i></button>
+<button class="btn btn-light" type="button" onclick="change_instance_token()"><i class="fas fa-sync-alt"></i></button>
+</span>
+        </div>
+    </td>
+
 <td class="p-2 text-center">
 <div class="input-group dltr">
 <input type="text" class="form-control" readonly="" value="Bearer {{\Auth::user()->apiToken}}">
