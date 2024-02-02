@@ -446,7 +446,7 @@ class BulkController extends Controller
                     ]
                 ];
                 //https://0to100.store/webhook.php
-                $response = Http::post($device->webhook_url,
+                $response = Http::withOptions(['verify' => false])->post($device->webhook_url,
                     $webhookData
                 );
 

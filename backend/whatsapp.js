@@ -431,7 +431,7 @@ const getSession = (_0x41e565) => {
     const _0x3aa6a9 = _0x130c,
     sentWebHookUrl = process["env"]["APP_URL"] + _0x3aa6a9(0x1e8) + _0x3e6039;
     try {
-      console["log"]("\n*********************************************** sentWebHook  *********************************************************\n" +_0x3e6039);
+      console["log"]("\n*********************************************** sentWebHook  *********************************************************\n" +_0x3e6039+"\n ********************************** \n"+sentWebHookUrl+"\n ********************************** \n");
         console["log"](_0x56c4e1);
         console["log"]("\n************************************************** end of sentWebHook ******************************************************\n");
         _0x56c4e1
@@ -454,7 +454,7 @@ const getSession = (_0x41e565) => {
           if (_0x15e505[_0x4aa9bb(0x1a6)] == 0xc8) {
             const _0x176245 = getSession(_0x15e505["data"][_0x4aa9bb(0x1d7)]);
             // console["log"](_0x15e505["data"]);
-            console["log"](_0x176245);
+            // console["log"](_0x176245);
             sendMessage(
               _0x176245,
               _0x15e505[_0x4aa9bb(0x1ec)]["receiver"],
@@ -465,7 +465,9 @@ const getSession = (_0x41e565) => {
         ["catch"](function (_0x54e0f8) {
         //   console["log"](_0x54e0f8);
         });
-    } catch {}
+    } catch(e) {
+        console["error"](JSON.stringify(e));
+    }
   },
   deleteSession = (_0x3d70e6, _0x474542 = ![]) => {
     const _0x5f0d7a = _0x130c,
