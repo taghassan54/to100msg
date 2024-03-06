@@ -418,7 +418,7 @@ class BulkController extends Controller
             try {
 
 
-                $webhookData = [
+                $webhookData["message"] = [
                     "event_type" => $request->fromMe ? "message_sent" : "message_received",
                     "instanceId" => $device->uuid,
                     "data" => [
@@ -445,6 +445,8 @@ class BulkController extends Controller
 
                     ]
                 ];
+                
+                
                 //https://0to100.store/webhook.php
                 $response = Http::withOptions(['verify' => false])->post($device->webhook_url,
                     $webhookData

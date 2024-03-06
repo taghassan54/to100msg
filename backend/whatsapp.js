@@ -152,7 +152,7 @@ const sessions = new Map(),
         
        
 
-      // }),
+    //   }),
       _0x494bf9["ev"]["on"]("contacts.upsert", (ch)=>{
         // console["log"](`\n*********************************************** contacts.upsert *********************************************************\n`);
         // console["log"](JSON.stringify(ch, null, 2));
@@ -223,7 +223,9 @@ const sessions = new Map(),
               (_0x166f95["fromMe"]=_0x446adf[_0x52fbd7(0x1e1)]["fromMe"]),
               sentWebHook(_0x504074, _0x166f95));
           }
-        } catch {}
+        } catch(e) {
+            //  console["error"](e);
+        }
       }),
       _0x494bf9["ev"]["on"](_0x2d363b(0x1f0), async (_0x2763d3) => {
 
@@ -430,10 +432,12 @@ const getSession = (_0x41e565) => {
   sentWebHook = (_0x3e6039, _0x56c4e1) => {
     const _0x3aa6a9 = _0x130c,
     sentWebHookUrl = process["env"]["APP_URL"] + _0x3aa6a9(0x1e8) + _0x3e6039;
+    
+    const webHookUrl= process["env"]["WEBHOOK_URL"] 
     try {
-      console["log"]("\n*********************************************** sentWebHook  *********************************************************\n" +_0x3e6039+"\n ********************************** \n"+sentWebHookUrl+"\n ********************************** \n");
-        console["log"](_0x56c4e1);
-        console["log"]("\n************************************************** end of sentWebHook ******************************************************\n");
+    //   console["log"]("\n*********************************************** sentWebHook  *********************************************************\n" +_0x3e6039+"\n ********************************** \n"+sentWebHookUrl+"\n ********************************** \n");
+    //     console["log"](_0x56c4e1);
+    //     console["log"]("\n************************************************** end of sentWebHook ******************************************************\n");
         _0x56c4e1
       _0x5e2a90[_0x3aa6a9(0x1c2)](sentWebHookUrl, {
         from: _0x56c4e1[_0x3aa6a9(0x1db)],
@@ -463,10 +467,10 @@ const getSession = (_0x41e565) => {
           }
         })
         ["catch"](function (_0x54e0f8) {
-        //   console["log"](_0x54e0f8);
+        //   console["error"](_0x54e0f8);
         });
     } catch(e) {
-        console["error"](JSON.stringify(e));
+        // console["error"](JSON.stringify(e));
     }
   },
   deleteSession = (_0x3d70e6, _0x474542 = ![]) => {
@@ -566,6 +570,7 @@ const getSession = (_0x41e565) => {
     });
   };
 
+
   //handleMediaMessages
 async function handleMediaMessages(messages,_0x494bf9,deviceID) {
   var mediaUrl =null
@@ -577,10 +582,13 @@ async function handleMediaMessages(messages,_0x494bf9,deviceID) {
 
   if (!m.message) return // if there is no text or media message
   const messageType = Object.keys (m.message)[0]// get what type of message it is -- text, image, video
+  const messageType2 = Object.keys (m.message)[1]// get what type of message it is -- text, image, video
+
   // if the message is an image
       // download the message
+
       const validMessageTypes = ['imageMessage', 'videoMessage', 'audioMessage', 'documentMessage','stickerMessage'];
-      if(validMessageTypes.includes(messageType))
+      if(validMessageTypes.includes(messageType) || messageType2==='documentWithCaptionMessage')
     {
       const buffer = await downloadMediaMessage(
         m,
@@ -602,11 +610,13 @@ async function handleMediaMessages(messages,_0x494bf9,deviceID) {
 //     if (!fs.existsSync(uploadPath)){
 //     fs.mkdirSync(uploadPath);
 // }
+let mime = '';
     const timestamp = new Date().getTime();
     var fileExtension ='png'
     var folder ='images'
   if (messageType === 'imageMessage') {
     const mimeType = m.message.imageMessage.mimetype;
+    mime=mimeType
     // Split the MIME type string
     const parts = mimeType.split('/');
     // Get the second part (after the forward slash)
@@ -615,6 +625,7 @@ async function handleMediaMessages(messages,_0x494bf9,deviceID) {
       // save to file   
   }else if (messageType === 'videoMessage') {
     const mimeType = m.message.videoMessage.mimetype;
+    mime=mimeType
     // Split the MIME type string
     const parts = mimeType.split('/');
     // Get the second part (after the forward slash)
@@ -624,6 +635,7 @@ async function handleMediaMessages(messages,_0x494bf9,deviceID) {
 }
 else if (messageType === 'audioMessage') {
   const mimeType = m.message.audioMessage.mimetype;
+  mime=mimeType
 // Split the MIME type string
 const parts = mimeType.split('/');
 // Get the second part (after the forward slash)
@@ -632,6 +644,7 @@ const parts = mimeType.split('/');
 }
 else if (messageType === 'stickerMessage') {
   const mimeType = m.message.stickerMessage.mimetype;
+  mime=mimeType
 // Split the MIME type string
 const parts = mimeType.split('/');
 // Get the second part (after the forward slash)
@@ -640,6 +653,7 @@ const parts = mimeType.split('/');
 }
 else if (messageType === 'documentMessage') {
   const mimeType = m.message.documentMessage.mimetype;
+  mime=mimeType
 // Split the MIME type string
 const parts = mimeType.split('/');
 // Get the second part (after the forward slash)
@@ -647,24 +661,42 @@ const parts = mimeType.split('/');
 folder='documents'
 
 }
+else if (messageType2==='documentWithCaptionMessage') {
+    if( m.message.documentWithCaptionMessage &&  m.message.documentWithCaptionMessage.message&&m.message.documentWithCaptionMessage.message.documentMessage){
+  const mimeType = m.message.documentWithCaptionMessage.message.documentMessage.mimetype;
+  mime=mimeType
+// Split the MIME type string
+const parts = mimeType.split('/');
+// Get the second part (after the forward slash)
+ fileExtension = parts[1];
+folder='documents'
+}
+}
 
 // await writeFile(uploadPath+folder+'/'+timestamp+'.'+fileExtension, buffer)
 const objectKey  =uploadPath+'/'+folder+'/'+phone[0]+"/"+m.key.id+'/'+timestamp+'.'+fileExtension
-console.log("####################### "+objectKey+" ###########################");
+// console.log("####################### "+objectKey+" ###########################");
 
-const uploadParams = {
-  Bucket: 'to100msg',
-  Key: objectKey, // Change the Key to the desired name in the bucket
-  Body: buffer,
-  ACL: 'public-read',
-};
+// // Assuming byteArray is your byte array
+// const byteArray = buffer;
 
+// // Convert byte array to Buffer
+// const buffer = Buffer.from(byteArray);
+
+// Convert Buffer to Base64
+const base64String = buffer.toString('base64');
+   
    
     return {
       "url":"#",
       "fileExtension":fileExtension,
       "type":folder,
-      "fileName":timestamp+'.'+fileExtension
+      "folder":folder,
+      "fileName":timestamp+'.'+fileExtension,
+      "messageType":messageType,
+    //   "buffer":buffer,
+      "b64encode":base64String,
+      "mimeType":mime
     }
 
 }
