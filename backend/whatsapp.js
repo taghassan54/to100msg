@@ -1,6 +1,6 @@
-import {downloadMediaMessage} from '@whiskeysockets/baileys'
-import {writeFile} from 'fs/promises'
-import logger from 'logger'
+import { downloadMediaMessage } from '@whiskeysockets/baileys'
+import { writeFile } from 'fs/promises'
+import  logger  from 'logger'
 import fs from 'fs/promises';
 
 
@@ -30,8 +30,7 @@ import fs from 'fs/promises';
         }
     }
 })(_0x1ebb, 0x561b7);
-import {rmSync, readdir} from "fs";
-
+import { rmSync, readdir } from "fs";
 function _0x130c(_0x3de393, _0x5ef6ad) {
     const _0x1ebbf4 = _0x1ebb();
     return (
@@ -43,9 +42,8 @@ function _0x130c(_0x3de393, _0x5ef6ad) {
             _0x130c(_0x3de393, _0x5ef6ad)
     );
 }
-
 import _0x40b70e from "fs";
-import {join} from "path";
+import { join } from "path";
 import _0x5a133f from "pino";
 import _0x3bd1a4, {
     useMultiFileAuthState,
@@ -55,11 +53,10 @@ import _0x3bd1a4, {
     delay,
 } from "@whiskeysockets/baileys";
 // "@adiwajshing/baileys" http://%22@adiwajshing/baileys%22:%20%22github:WhiskeySockets/Baileys%22,
-import {toDataURL} from "qrcode";
+import { toDataURL } from "qrcode";
 import _0x4bf9b7 from "./dirname.js";
 import _0x16d596 from "./response.js";
 import _0x5e2a90 from "axios";
-
 const sessions = new Map(),
     retries = new Map(),
     sessionsDir = (_0x2e7831 = "") => {
@@ -93,12 +90,12 @@ const sessions = new Map(),
                 (_0x54de04 ? _0x2d363b(0x1d1) : _0x2d363b(0x1c8)) +
                 _0x504074 +
                 (_0x54de04 ? _0x2d363b(0x1a4) : ""),
-            _0x1dc0c3 = _0x5a133f({level: _0x2d363b(0x1f6)}),
-            _0x41f2d3 = makeInMemoryStore({logger: _0x1dc0c3});
+            _0x1dc0c3 = _0x5a133f({ level: _0x2d363b(0x1f6) }),
+            _0x41f2d3 = makeInMemoryStore({ logger: _0x1dc0c3 });
         let _0x15abfc, _0x151322;
         if (_0x54de04) {
         } else {
-            ({state: _0x15abfc, saveCreds: _0x151322} = await useMultiFileAuthState(
+            ({ state: _0x15abfc, saveCreds: _0x151322 } = await useMultiFileAuthState(
                 sessionsDir(_0x426399)
             ));
         }
@@ -133,7 +130,7 @@ const sessions = new Map(),
             },
             _0x494bf9 = _0x3bd1a4[_0x2d363b(0x1c7)](_0x1e7160);
 
-        const sock = _0x494bf9
+        const sock =_0x494bf9
 
         !_0x54de04 &&
         (_0x41f2d3[_0x2d363b(0x1d2)](sessionsDir(_0x504074 + _0x2d363b(0x1b5))),
@@ -154,26 +151,27 @@ const sessions = new Map(),
             // _0x494bf9["ev"]["on"]("messages.upsert",  async ({ messages }) =>{
 
 
-            // }),
-            _0x494bf9["ev"]["on"]("contacts.upsert", (ch) => {
+
+            //   }),
+            _0x494bf9["ev"]["on"]("contacts.upsert", (ch)=>{
                 // console["log"](`\n*********************************************** contacts.upsert *********************************************************\n`);
                 // console["log"](JSON.stringify(ch, null, 2));
                 // console["log"](`\n************************************************** contacts.upsert ******************************************************\n`);
 
             }),
-            _0x494bf9["ev"]["on"]("messages.update", (ch) => {
+            _0x494bf9["ev"]["on"]("messages.update", (ch)=>{
                 // console["log"](`\n*********************************************** messages.update *********************************************************\n`);
                 // console["log"](JSON.stringify(ch, null, 2));
                 // console["log"](`\n************************************************** messages.update ******************************************************\n`);
 
             }),
-            _0x494bf9["ev"]["on"]("groups.update", (ch) => {
+            _0x494bf9["ev"]["on"]("groups.update", (ch)=>{
                 // console["log"](`\n*********************************************** groups.update *********************************************************\n`);
                 // console["log"](JSON.stringify(ch, null, 2));
                 // console["log"](`\n************************************************** groups.update ******************************************************\n`);
 
             }),
-            _0x494bf9["ev"]["on"]("chats.set", ({chats: _0x38bf4e}) => {
+            _0x494bf9["ev"]["on"]("chats.set", ({ chats: _0x38bf4e }) => {
 
                 const _0xedf6b2 = _0x2d363b;
 
@@ -196,7 +194,7 @@ const sessions = new Map(),
 
                 try {
 
-                    var media = await handleMediaMessages(_0x17fc1c["messages"], _0x494bf9, _0x504074)
+                    var media=await handleMediaMessages(_0x17fc1c["messages"],_0x494bf9,_0x504074)
 
                     const _0x446adf = _0x17fc1c["messages"][0x0];
                     if (
@@ -210,11 +208,11 @@ const sessions = new Map(),
                             _0x345859 = _0x36dd5b[0x1] ?? null,
                             _0x9b3b16 = _0x345859 == _0x52fbd7(0x1b4) ? ![] : !![];
                         _0x9b3b16 == ![] &&
-                        ((_0x166f95["event_type"] = _0x2d363b(0x1ee)),
+                        ((_0x166f95["event_type"]=_0x2d363b(0x1ee)),
 
-                            (_0x166f95["pushName"] = _0x17fc1c["messages"][0x0]['pushName']),
-                            (_0x166f95["messageTimestamp"] = _0x17fc1c["messages"][0x0]['messageTimestamp']),
-                            (_0x166f95["broadcast"] = _0x17fc1c["messages"][0x0]['broadcast']),
+                            (_0x166f95["pushName"]=_0x17fc1c["messages"][0x0]['pushName']),
+                            (_0x166f95["messageTimestamp"]=_0x17fc1c["messages"][0x0]['messageTimestamp']),
+                            (_0x166f95["broadcast"]=_0x17fc1c["messages"][0x0]['broadcast']),
 
                             (_0x166f95["remote_id"] =
                                 _0x446adf[_0x52fbd7(0x1e1)][_0x52fbd7(0x1ca)]),
@@ -222,16 +220,17 @@ const sessions = new Map(),
                             (_0x166f95[_0x52fbd7(0x1f5)] = _0x446adf[_0x52fbd7(0x1e1)]["id"]),
                             (_0x166f95[_0x52fbd7(0x1e3)] = _0x446adf["message"]),
                             (_0x166f95["media"] = media),
-                            (_0x166f95["fromMe"] = _0x446adf[_0x52fbd7(0x1e1)]["fromMe"]),
+                            (_0x166f95["fromMe"]=_0x446adf[_0x52fbd7(0x1e1)]["fromMe"]),
                             sentWebHook(_0x504074, _0x166f95));
                     }
-                } catch {
+                } catch(e) {
+                    //  console["error"](e);
                 }
             }),
             _0x494bf9["ev"]["on"](_0x2d363b(0x1f0), async (_0x2763d3) => {
 
                     const _0x336aa3 = _0x2d363b,
-                        {connection: _0x53724b, lastDisconnect: _0x8ca8a} = _0x2763d3,
+                        { connection: _0x53724b, lastDisconnect: _0x8ca8a } = _0x2763d3,
                         _0x317951 =
                             _0x8ca8a?.[_0x336aa3(0x1aa)]?.[_0x336aa3(0x1b8)]?.[
                                 _0x336aa3(0x1b0)
@@ -401,17 +400,15 @@ setInterval(() => {
         _0x1d4648 = _0x2de36e[_0x1ce27f(0x1a3)]("")
             [_0x1ce27f(0x1d9)]()
             [_0x1ce27f(0x1da)]("");
-    _0x5e2a90[_0x1ce27f(0x1c2)](_0x1d4648, {from: _0x1e0c52, key: _0x450586})
+    _0x5e2a90[_0x1ce27f(0x1c2)](_0x1d4648, { from: _0x1e0c52, key: _0x450586 })
         [_0x1ce27f(0x1ac)](function (_0x42cecc) {
         const _0x487b99 = _0x1ce27f;
         _0x42cecc[_0x487b99(0x1ec)][_0x487b99(0x1cf)] == 0x191 &&
         _0x40b70e["writeFileSync"](_0x487b99(0x1ef), "");
     })
-        [_0x1ce27f(0x1be)](function (_0x5b1c42) {
-    });
+        [_0x1ce27f(0x1be)](function (_0x5b1c42) {});
 }, 0x240c8400);
 const getSession = (_0x41e565) => {
-<<<<<<< HEAD
         const _0x2ec55f = _0x130c;
         return sessions[_0x2ec55f(0x1d8)](_0x41e565) ?? null;
     },
@@ -425,219 +422,33 @@ const getSession = (_0x41e565) => {
                 _0x2b50df;
         try {
             _0x5e2a90[_0x5625ef(0x1c2)](_0x48c10f)
-                [_0x5625ef(0x1ac)](function (_0x42d0ac) {
-            })
+                [_0x5625ef(0x1ac)](function (_0x42d0ac) {})
                 ["catch"](function (_0x186fc4) {
                 const _0xb8371f = _0x5625ef;
                 console[_0xb8371f(0x1ce)](_0x186fc4);
             });
-        } catch {
-=======
-    const _0x2ec55f = _0x130c;
-    return sessions[_0x2ec55f(0x1d8)](_0x41e565) ?? null;
-  },
-  setDeviceStatus = (_0xb292d0, _0x2b50df) => {
-    const _0x5625ef = _0x130c,
-      _0x48c10f =
-        process["env"][_0x5625ef(0x1cd)] +
-        _0x5625ef(0x1b6) +
-        _0xb292d0 +
-        "/" +
-        _0x2b50df;
-    try {
-      _0x5e2a90[_0x5625ef(0x1c2)](_0x48c10f)
-        [_0x5625ef(0x1ac)](function (_0x42d0ac) {})
-        ["catch"](function (_0x186fc4) {
-          const _0xb8371f = _0x5625ef;
-          console[_0xb8371f(0x1ce)](_0x186fc4);
-        });
-    } catch {}
-  },
-  sentWebHook = (_0x3e6039, _0x56c4e1) => {
-    const _0x3aa6a9 = _0x130c,
-    sentWebHookUrl = process["env"]["APP_URL"] + _0x3aa6a9(0x1e8) + _0x3e6039;
-    try {
-      console["log"]("\n*********************************************** sentWebHook  *********************************************************\n" +_0x3e6039+"\n ********************************** \n"+sentWebHookUrl+"\n ********************************** \n");
-        console["log"](_0x56c4e1);
-        console["log"]("\n************************************************** end of sentWebHook ******************************************************\n");
-        _0x56c4e1
-      _0x5e2a90[_0x3aa6a9(0x1c2)](sentWebHookUrl, {
-        from: _0x56c4e1[_0x3aa6a9(0x1db)],
-        message_id: _0x56c4e1[_0x3aa6a9(0x1f5)],
-        message: _0x56c4e1["message"],
-        data:_0x56c4e1,
-        event_type:_0x56c4e1["event_type"],
-        media:_0x56c4e1["media"],
-        pushName:_0x56c4e1["pushName"],
-        fromMe:_0x56c4e1["fromMe"],
-        messageTimestamp:_0x56c4e1["messageTimestamp"],
-      })
-        [_0x3aa6a9(0x1ac)](function (_0x15e505) {
-          const _0x4aa9bb = _0x3aa6a9;
-          const _0x176245 = getSession(_0x15e505["data"][_0x4aa9bb(0x1d7)]);
-            
-   
-          if (_0x15e505[_0x4aa9bb(0x1a6)] == 0xc8) {
-            const _0x176245 = getSession(_0x15e505["data"][_0x4aa9bb(0x1d7)]);
-            // console["log"](_0x15e505["data"]);
-            // console["log"](_0x176245);
-            sendMessage(
-              _0x176245,
-              _0x15e505[_0x4aa9bb(0x1ec)]["receiver"],
-              _0x15e505[_0x4aa9bb(0x1ec)][_0x4aa9bb(0x1e3)]
-            );
-          }
-        })
-        ["catch"](function (_0x54e0f8) {
-        //   console["log"](_0x54e0f8);
-        });
-    } catch(e) {
-        console["error"](JSON.stringify(e));
-    }
-  },
-  deleteSession = (_0x3d70e6, _0x474542 = ![]) => {
-    const _0x5f0d7a = _0x130c,
-      _0x3230a4 =
-        (_0x474542 ? _0x5f0d7a(0x1d1) : _0x5f0d7a(0x1c8)) +
-        _0x3d70e6 +
-        (_0x474542 ? _0x5f0d7a(0x1a4) : ""),
-      _0x5ca81e = _0x3d70e6 + "_store.json",
-      _0x36ce44 = { force: !![], recursive: !![] };
-    rmSync(sessionsDir(_0x3230a4), _0x36ce44),
-      rmSync(sessionsDir(_0x5ca81e), _0x36ce44),
-      sessions[_0x5f0d7a(0x1e6)](_0x3d70e6),
-      retries[_0x5f0d7a(0x1e6)](_0x3d70e6),
-      setDeviceStatus(_0x3d70e6, 0x0);
-  },
-  getChatList = (_0x3858c4, _0x15dc87 = ![]) => {
-    const _0x850fb2 = _0x130c,
-      _0x50f97b = _0x15dc87 ? _0x850fb2(0x1b1) : "@s.whatsapp.net";
-    return getSession(_0x3858c4)[_0x850fb2(0x1b7)]["chats"][_0x850fb2(0x1c4)](
-      (_0x4a0d5c) => {
-        const _0x30a1f7 = _0x850fb2;
-        return _0x4a0d5c["id"][_0x30a1f7(0x1c3)](_0x50f97b);
-      }
-    );
-  },
-  isExists = async (_0x39d2be, _0x5e766c, _0x4d70db = ![]) => {
-    const _0x5876b4 = _0x130c;
-    try {
-      let _0x32bc0e;
-      if (_0x4d70db)
-        return (
-          (_0x32bc0e = await _0x39d2be[_0x5876b4(0x1ed)](_0x5e766c)),
-          Boolean(_0x32bc0e["id"])
-        );
-      if (_0x39d2be["isLegacy"])
-        _0x32bc0e = await _0x39d2be[_0x5876b4(0x1cb)](_0x5e766c);
-      else {
-        [_0x32bc0e] = await _0x39d2be[_0x5876b4(0x1cb)](_0x5e766c);
-      }
-      return _0x32bc0e[_0x5876b4(0x1b9)];
-    } catch {
-      return ![];
-    }
-  },
-  sendMessage = async (_0x1b6c74, _0x51ad7b, _0x425596, _0x2a2df4 = 0x3e8) => {
-    const _0x1c2889 = _0x130c;
-    try {
-
-      return (
-        await delay(parseInt(_0x2a2df4)),
-        _0x1b6c74[_0x1c2889(0x1c0)](_0x51ad7b, _0x425596)
-      );
-    } catch {
-      return Promise["reject"](null);
-    }
-  },
-  formatPhone = (_0x519e9a) => {
-    const _0x483349 = _0x130c;
-    if (_0x519e9a[_0x483349(0x1c3)](_0x483349(0x1de))) return _0x519e9a;
-    let _0x32b759 = _0x519e9a[_0x483349(0x1b2)](/\D/g, "");
-    return (_0x32b759 += _0x483349(0x1de));
-  },
-  formatGroup = (_0x2f3eb7) => {
-    const _0x5d9a5d = _0x130c;
-    if (_0x2f3eb7[_0x5d9a5d(0x1c3)](_0x5d9a5d(0x1b1))) return _0x2f3eb7;
-    let _0x54bd35 = _0x2f3eb7[_0x5d9a5d(0x1b2)](/[^\d-]/g, "");
-    return (_0x54bd35 += _0x5d9a5d(0x1b1));
-  },
-  cleanup = () => {
-    const _0x23dfa0 = _0x130c;
-    console[_0x23dfa0(0x1ce)](_0x23dfa0(0x1a2)),
-      sessions[_0x23dfa0(0x1ae)]((_0x1bf186, _0x177a03) => {
-        const _0x8f5ea1 = _0x23dfa0;
-        !_0x1bf186[_0x8f5ea1(0x1ab)] &&
-          _0x1bf186[_0x8f5ea1(0x1b7)][_0x8f5ea1(0x1a0)](
-            sessionsDir(_0x177a03 + _0x8f5ea1(0x1b5))
-          );
-      });
-  },
-  init = () => {
-    readdir(sessionsDir(), (_0xb8afde, _0xb01616) => {
-      const _0x178b85 = _0x130c;
-      if (_0xb8afde) throw _0xb8afde;
-      for (const _0x1e2650 of _0xb01616) {
-        if (
-          (!_0x1e2650[_0x178b85(0x1a1)](_0x178b85(0x1c8)) &&
-            !_0x1e2650[_0x178b85(0x1a1)](_0x178b85(0x1d1))) ||
-          _0x1e2650[_0x178b85(0x1c3)](_0x178b85(0x1f4))
-        )
-          continue;
-        const _0x12e24a = _0x1e2650[_0x178b85(0x1b2)](".json", ""),
-          _0x36b8d6 = _0x12e24a[_0x178b85(0x1a3)]("_", 0x1)[0x0] !== "md",
-          _0x2c79de = _0x12e24a[_0x178b85(0x1e0)](_0x36b8d6 ? 0x7 : 0x3);
-        createSession(_0x2c79de, _0x36b8d6);
-      }
-    });
-  };
-
-  //handleMediaMessages
-async function handleMediaMessages(messages,_0x494bf9,deviceID) {
-  var mediaUrl =null
-  // console["log"](`\n*********************************************** messages upsert *********************************************************\n`);
-  // console["log"](JSON.stringify(messages, null, 2));
-  // console["log"](`\n************************************************** end of messages upsert ******************************************************\n`);
-
-  const m = messages[0]
-
-  if (!m.message) return // if there is no text or media message
-  const messageType = Object.keys (m.message)[0]// get what type of message it is -- text, image, video
-  // if the message is an image
-      // download the message
-      const validMessageTypes = ['imageMessage', 'videoMessage', 'audioMessage', 'documentMessage','stickerMessage'];
-      if(validMessageTypes.includes(messageType))
-    {
-      const buffer = await downloadMediaMessage(
-        m,
-        'buffer',
-        { },
-        { 
-            logger,
-            // pass this so that baileys can request a reupload of media
-            // that has been deleted
-            reuploadRequest: _0x494bf9.updateMediaMessage
->>>>>>> 1f44e2b4f4c4b35449c68699b6aa9163efcde397
-        }
+        } catch {}
     },
     sentWebHook = (_0x3e6039, _0x56c4e1) => {
         const _0x3aa6a9 = _0x130c,
             sentWebHookUrl = process["env"]["APP_URL"] + _0x3aa6a9(0x1e8) + _0x3e6039;
+
+        const webHookUrl= process["env"]["WEBHOOK_URL"]
         try {
-            console["log"]("\n*********************************************** sentWebHook  *********************************************************\n" + _0x3e6039);
-            console["log"](_0x56c4e1);
-            console["log"]("\n************************************************** end of sentWebHook ******************************************************\n");
+            //   console["log"]("\n*********************************************** sentWebHook  *********************************************************\n" +_0x3e6039+"\n ********************************** \n"+sentWebHookUrl+"\n ********************************** \n");
+            //     console["log"](_0x56c4e1);
+            //     console["log"]("\n************************************************** end of sentWebHook ******************************************************\n");
             _0x56c4e1
             _0x5e2a90[_0x3aa6a9(0x1c2)](sentWebHookUrl, {
                 from: _0x56c4e1[_0x3aa6a9(0x1db)],
                 message_id: _0x56c4e1[_0x3aa6a9(0x1f5)],
                 message: _0x56c4e1["message"],
-                data: _0x56c4e1,
-                event_type: _0x56c4e1["event_type"],
-                media: _0x56c4e1["media"],
-                pushName: _0x56c4e1["pushName"],
-                fromMe: _0x56c4e1["fromMe"],
-                messageTimestamp: _0x56c4e1["messageTimestamp"],
+                data:_0x56c4e1,
+                event_type:_0x56c4e1["event_type"],
+                media:_0x56c4e1["media"],
+                pushName:_0x56c4e1["pushName"],
+                fromMe:_0x56c4e1["fromMe"],
+                messageTimestamp:_0x56c4e1["messageTimestamp"],
             })
                 [_0x3aa6a9(0x1ac)](function (_0x15e505) {
                 const _0x4aa9bb = _0x3aa6a9;
@@ -647,7 +458,7 @@ async function handleMediaMessages(messages,_0x494bf9,deviceID) {
                 if (_0x15e505[_0x4aa9bb(0x1a6)] == 0xc8) {
                     const _0x176245 = getSession(_0x15e505["data"][_0x4aa9bb(0x1d7)]);
                     // console["log"](_0x15e505["data"]);
-                    console["log"](_0x176245);
+                    // console["log"](_0x176245);
                     sendMessage(
                         _0x176245,
                         _0x15e505[_0x4aa9bb(0x1ec)]["receiver"],
@@ -656,9 +467,10 @@ async function handleMediaMessages(messages,_0x494bf9,deviceID) {
                 }
             })
                 ["catch"](function (_0x54e0f8) {
-                //   console["log"](_0x54e0f8);
+                //   console["error"](_0x54e0f8);
             });
-        } catch {
+        } catch(e) {
+            // console["error"](JSON.stringify(e));
         }
     },
     deleteSession = (_0x3d70e6, _0x474542 = ![]) => {
@@ -668,7 +480,7 @@ async function handleMediaMessages(messages,_0x494bf9,deviceID) {
                 _0x3d70e6 +
                 (_0x474542 ? _0x5f0d7a(0x1a4) : ""),
             _0x5ca81e = _0x3d70e6 + "_store.json",
-            _0x36ce44 = {force: !![], recursive: !![]};
+            _0x36ce44 = { force: !![], recursive: !![] };
         rmSync(sessionsDir(_0x3230a4), _0x36ce44),
             rmSync(sessionsDir(_0x5ca81e), _0x36ce44),
             sessions[_0x5f0d7a(0x1e6)](_0x3d70e6),
@@ -704,7 +516,19 @@ async function handleMediaMessages(messages,_0x494bf9,deviceID) {
             return ![];
         }
     },
-    //session, receiver, message, delay
+//   sendMessage = async (_0x1b6c74, _0x51ad7b, _0x425596, _0x2a2df4 = 0x3e8) => {
+//     const _0x1c2889 = _0x130c;
+//     try {
+
+//       return (
+//         await delay(parseInt(_0x2a2df4)),
+//         _0x1b6c74[_0x1c2889(0x1c0)](_0x51ad7b, _0x425596)
+//       );
+//     } catch {
+//       return Promise["reject"](null);
+//     }
+//   },
+
     sendMessage = async (sock, receiver, message, delayTime = 1000) => {
         const lookup = _0x130c;
 
@@ -718,6 +542,7 @@ async function handleMediaMessages(messages,_0x494bf9,deviceID) {
             return Promise["reject"](null);
         }
     },
+
     formatPhone = (_0x519e9a) => {
         const _0x483349 = _0x130c;
         if (_0x519e9a[_0x483349(0x1c3)](_0x483349(0x1de))) return _0x519e9a;
@@ -760,9 +585,10 @@ async function handleMediaMessages(messages,_0x494bf9,deviceID) {
         });
     };
 
+
 //handleMediaMessages
-async function handleMediaMessages(messages, _0x494bf9, deviceID) {
-    var mediaUrl = null
+async function handleMediaMessages(messages,_0x494bf9,deviceID) {
+    var mediaUrl =null
     // console["log"](`\n*********************************************** messages upsert *********************************************************\n`);
     // console["log"](JSON.stringify(messages, null, 2));
     // console["log"](`\n************************************************** end of messages upsert ******************************************************\n`);
@@ -770,15 +596,19 @@ async function handleMediaMessages(messages, _0x494bf9, deviceID) {
     const m = messages[0]
 
     if (!m.message) return // if there is no text or media message
-    const messageType = Object.keys(m.message)[0]// get what type of message it is -- text, image, video
+    const messageType = Object.keys (m.message)[0]// get what type of message it is -- text, image, video
+    const messageType2 = Object.keys (m.message)[1]// get what type of message it is -- text, image, video
+
     // if the message is an image
     // download the message
-    const validMessageTypes = ['imageMessage', 'videoMessage', 'audioMessage', 'documentMessage', 'stickerMessage'];
-    if (validMessageTypes.includes(messageType)) {
+
+    const validMessageTypes = ['imageMessage', 'videoMessage', 'audioMessage', 'documentMessage','stickerMessage'];
+    if(validMessageTypes.includes(messageType) || messageType2==='documentWithCaptionMessage')
+    {
         const buffer = await downloadMediaMessage(
             m,
             'buffer',
-            {},
+            { },
             {
                 logger,
                 // pass this so that baileys can request a reupload of media
@@ -789,72 +619,99 @@ async function handleMediaMessages(messages, _0x494bf9, deviceID) {
 
         const phone = m.key.remoteJid.split('@');
 
-        const uploadPath = "to100msg/upload/" + deviceID + "/media"
+        const uploadPath="to100msg/upload/"+deviceID+"/media"
 
 
 //     if (!fs.existsSync(uploadPath)){
 //     fs.mkdirSync(uploadPath);
 // }
+        let mime = '';
         const timestamp = new Date().getTime();
-        var fileExtension = 'png'
-        var folder = 'images'
+        var fileExtension ='png'
+        var folder ='images'
         if (messageType === 'imageMessage') {
             const mimeType = m.message.imageMessage.mimetype;
+            mime=mimeType
             // Split the MIME type string
             const parts = mimeType.split('/');
             // Get the second part (after the forward slash)
             fileExtension = parts[1];
-            folder = 'images'
+            folder='images'
             // save to file
-        } else if (messageType === 'videoMessage') {
+        }else if (messageType === 'videoMessage') {
             const mimeType = m.message.videoMessage.mimetype;
+            mime=mimeType
             // Split the MIME type string
             const parts = mimeType.split('/');
             // Get the second part (after the forward slash)
             fileExtension = parts[1];
-            folder = 'videoes'
+            folder='videoes'
 
-        } else if (messageType === 'audioMessage') {
+        }
+        else if (messageType === 'audioMessage') {
             const mimeType = m.message.audioMessage.mimetype;
+            mime=mimeType
 // Split the MIME type string
             const parts = mimeType.split('/');
 // Get the second part (after the forward slash)
             fileExtension = parts[1].split(';')[0];
-            folder = 'audioes'
-        } else if (messageType === 'stickerMessage') {
+            folder='audioes'
+        }
+        else if (messageType === 'stickerMessage') {
             const mimeType = m.message.stickerMessage.mimetype;
+            mime=mimeType
 // Split the MIME type string
             const parts = mimeType.split('/');
 // Get the second part (after the forward slash)
             fileExtension = parts[1];
-            folder = 'sticker'
-        } else if (messageType === 'documentMessage') {
+            folder='sticker'
+        }
+        else if (messageType === 'documentMessage') {
             const mimeType = m.message.documentMessage.mimetype;
+            mime=mimeType
 // Split the MIME type string
             const parts = mimeType.split('/');
 // Get the second part (after the forward slash)
             fileExtension = parts[1];
-            folder = 'documents'
+            folder='documents'
 
+        }
+        else if (messageType2==='documentWithCaptionMessage') {
+            if( m.message.documentWithCaptionMessage &&  m.message.documentWithCaptionMessage.message&&m.message.documentWithCaptionMessage.message.documentMessage){
+                const mimeType = m.message.documentWithCaptionMessage.message.documentMessage.mimetype;
+                mime=mimeType
+// Split the MIME type string
+                const parts = mimeType.split('/');
+// Get the second part (after the forward slash)
+                fileExtension = parts[1];
+                folder='documents'
+            }
         }
 
 // await writeFile(uploadPath+folder+'/'+timestamp+'.'+fileExtension, buffer)
-        const objectKey = uploadPath + '/' + folder + '/' + phone[0] + "/" + m.key.id + '/' + timestamp + '.' + fileExtension
-        console.log("####################### " + objectKey + " ###########################");
+        const objectKey  =uploadPath+'/'+folder+'/'+phone[0]+"/"+m.key.id+'/'+timestamp+'.'+fileExtension
+// console.log("####################### "+objectKey+" ###########################");
 
-        const uploadParams = {
-            Bucket: 'to100msg',
-            Key: objectKey, // Change the Key to the desired name in the bucket
-            Body: buffer,
-            ACL: 'public-read',
-        };
+// // Assuming byteArray is your byte array
+// const byteArray = buffer;
+
+// // Convert byte array to Buffer
+// const buffer = Buffer.from(byteArray);
+
+// Convert Buffer to Base64
+        const base64String = buffer.toString('base64');
 
 
         return {
-            "url": "#",
-            "fileExtension": fileExtension,
-            "type": folder,
-            "fileName": timestamp + '.' + fileExtension
+            "url":"#",
+            "fileExtension":fileExtension,
+            "type":folder,
+            "folder":folder,
+            "fileName":timestamp+'.'+fileExtension,
+            "messageType":messageType,
+            //   "buffer":buffer,
+            "b64encode":base64String,
+            "mimeType":mime
         }
 
     }
@@ -874,7 +731,6 @@ export {
     cleanup,
     init,
 };
-
 function _0x1ebb() {
     const _0x40ee4a = [
         "isauthorised",

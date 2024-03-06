@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4666fca0-cc34-4240-a2c8-07c09d9f1b4c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/routes/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middlewares/sessionValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/sessionValidator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/whatsapp.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/whatsapp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wasender/.env" beforeDir="false" afterPath="$PROJECT_DIR$/wasender/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wasender/app/Http/Controllers/User/DeviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/wasender/app/Http/Controllers/User/DeviceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wasender/app/Traits/Whatsapp.php" beforeDir="false" afterPath="$PROJECT_DIR$/wasender/app/Traits/Whatsapp.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +213,7 @@
       <workItem from="1703595108655" duration="1501000" />
       <workItem from="1708045248573" duration="87000" />
       <workItem from="1709377002993" duration="4394000" />
-      <workItem from="1709742017029" duration="12332000" />
+      <workItem from="1709742017029" duration="13339000" />
     </task>
     <servers />
   </component>
