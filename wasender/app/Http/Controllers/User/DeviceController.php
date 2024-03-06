@@ -142,7 +142,7 @@ class DeviceController extends Controller
 
        $id=$device->id;
        $response=Http::get(env('WA_SERVER_URL').'/sessions/status/device_'.$id);
-
+//dd($response->body());
        $device->status= $response->status() == 200 ? 1 : 0;
        if ($response->status() == 200) {
            $res=json_decode($response->body());
