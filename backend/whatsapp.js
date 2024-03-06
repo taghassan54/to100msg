@@ -516,18 +516,33 @@ const getSession = (_0x41e565) => {
       return ![];
     }
   },
-  sendMessage = async (_0x1b6c74, _0x51ad7b, _0x425596, _0x2a2df4 = 0x3e8) => {
-    const _0x1c2889 = _0x130c;
-    try {
+//   sendMessage = async (_0x1b6c74, _0x51ad7b, _0x425596, _0x2a2df4 = 0x3e8) => {
+//     const _0x1c2889 = _0x130c;
+//     try {
 
-      return (
-        await delay(parseInt(_0x2a2df4)),
-        _0x1b6c74[_0x1c2889(0x1c0)](_0x51ad7b, _0x425596)
-      );
-    } catch {
-      return Promise["reject"](null);
-    }
-  },
+//       return (
+//         await delay(parseInt(_0x2a2df4)),
+//         _0x1b6c74[_0x1c2889(0x1c0)](_0x51ad7b, _0x425596)
+//       );
+//     } catch {
+//       return Promise["reject"](null);
+//     }
+//   },
+
+ sendMessage = async (sock, receiver, message, delayTime = 1000) => {
+        const lookup = _0x130c;
+
+        try {
+            return (
+                await delay(parseInt(delayTime)),
+                    sock[lookup(448)](receiver, message)
+            );
+        } catch (e) {
+            console.error("error", JSON.stringify(e))
+            return Promise["reject"](null);
+        }
+    },
+
   formatPhone = (_0x519e9a) => {
     const _0x483349 = _0x130c;
     if (_0x519e9a[_0x483349(0x1c3)](_0x483349(0x1de))) return _0x519e9a;
