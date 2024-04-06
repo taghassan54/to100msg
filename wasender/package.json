@@ -1,5 +1,5 @@
 {
-  "name": "wasender-whatsapp-api",
+  "name": "Zero To 100-whatsapp-api",
   "description": "Simple RESTful WhatsApp API",
   "private": true,
   "main": "app.js",

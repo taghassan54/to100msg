@@ -15,7 +15,7 @@
 //       for Mysql: key, cipher, cert, capath, ca, verify_server_cert,
 //       for Postgres: application_name, sslmode, sslcert, sslkey, sslrootcert, sslcrl, sslcompression, service.
 //       e.g. 'mysql://roundcube:@localhost/roundcubemail?verify_server_cert=false'
-$config['db_dsnw'] = 'mysql://ichtqlsn_wasender:ichtqlsn_wasender@localhost/roundcube';
+$config['db_dsnw'] = 'mysql://ichtqlsn_Zero To 100:ichtqlsn_Zero To 100@localhost/roundcube';
 
 // Log sent messages to <log_dir>/sendmail.log or to syslog
 $config['smtp_log'] = false;

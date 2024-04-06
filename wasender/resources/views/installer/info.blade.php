@@ -9,7 +9,7 @@ $enabled=true;
       @csrf
       <div class="form-group mt-5">
          <label>{{ __('Enter your site name') }}</label>
-         <input type="text" name="site_name" class="form-control" required="" placeholder="WASender" maxlength="20">
+         <input type="text" name="site_name" class="form-control" required="" placeholder="Zero To 100" maxlength="20">
       </div>
       <div class="form-group mb-2">
          <label>{{ __('Database Connection Driver') }}</label>
@@ -50,7 +50,7 @@ $enabled=true;
          </button>
       </div>
       <button class="btn btn-outline-primary mt-1 submit-btn">
-      <span class="mb-1">{{ __('Submit & Next') }}</span> 
+      <span class="mb-1">{{ __('Submit & Next') }}</span>
       <i class="fi  fi-rs-angle-right text-right mt-5"></i>
       </button>
       <a href="https://youtu.be/TAbs7tba5kE" target="_blank" class="float-right">

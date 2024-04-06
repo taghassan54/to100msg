@@ -28,7 +28,7 @@
 							<li class="nav-item mt-2">
 								<a class="nav-link" id="profile-tab4" data-toggle="tab" href="#contact-page" role="tab" aria-controls="profile" aria-selected="false">{{ __('Contact Page') }}</a>
 							</li>
-							
+
 							<li class="nav-item mt-2 none">
 								<a class="nav-link" id="contact-tab4" data-toggle="tab" href="#contact4" role="tab" aria-controls="contact" aria-selected="false"></a>
 							</li>
@@ -56,10 +56,10 @@
 										<select class="form-control" name="theme_path">
 											<option value="frontend.index" {{ $theme_path == 'frontend.index' ? 'selected' : '' }}>{{ __('Theme 1') }}</option>
 											<option value="frontend.index-1" {{ $theme_path == 'frontend.index-1' ? 'selected' : '' }}>{{ __('Theme 2') }}</option>
-											
+
 										</select>
 									</div>
-									
+
 									<div class="form-group">
 										<label>{{ __('Contact Email address') }}</label>
 										<input type="email" name="contact_email" value="{{ $primary_data->contact_email ?? '' }}" class="form-control" required="">
@@ -103,13 +103,13 @@
 									@method('PUT')
 									<div class="form-group">
 										<label>{{ __('Section Title') }}</label>
-										<input type="text" name="data[title]" class="form-control" value="{{ $why_choose->title ?? '' }}" required="" placeholder="{{ __('Why choose WASender 🎖️') }}">
+										<input type="text" name="data[title]" class="form-control" value="{{ $why_choose->title ?? '' }}" required="" placeholder="{{ __('Why choose Zero To 100 🎖️') }}">
 									</div>
 									<div class="form-group">
 										<label>{{ __('Section Sub Title') }}</label>
 										<input type="text" name="data[subtitle]" class="form-control" value="{{ $why_choose->subtitle ?? '' }}" required="">
 									</div>
-									
+
 									<div class="form-row">
 										<div class="col-sm-6">
 											<div class="form-group">
@@ -210,12 +210,12 @@
 											</div>
 										</div>
 									</div>
-									
+
 
 									<div class="form-group">
 										<button class="btn btn-neutral submit-button">{{ __('Update') }}</button>
 									</div>
-								</form>	
+								</form>
 							</div>
 							<div class="tab-pane fade" id="contact-page" role="tabpanel" aria-labelledby="profile-tab4">
 								<form method="POST" action="{{ route('admin.page-settings.update','contact-page') }}" class="ajaxform" enctype="multipart/form-data">
@@ -254,12 +254,12 @@
 									<div class="form-group">
 										<button class="btn btn-neutral submit-button">{{ __('Update') }}</button>
 									</div>
-								</form>	
+								</form>
 							</div>
 							<div class="tab-pane fade" id="home-page" role="tabpanel" aria-labelledby="profile-tab4">
 								<form method="POST" action="{{ route('admin.page-settings.update','home-page') }}" class="ajaxform" enctype="multipart/form-data">
 									@method('PUT')
-									
+
 									<div class="form-group">
 										<label>{{ __('Hero Ttitle') }}</label>
 										<input type="text" name="data[heading][title]" class="form-control" value="{{ $home->heading->title ?? '' }}" required="">
@@ -269,7 +269,7 @@
 											<div class="form-group">
 												<label>{{ __('Action Left Button Image') }}</label>
 												<input type="file" name="left_button_image" accept="image/*" class="form-control">
-											</div>											
+											</div>
 										</div>
 										<div class="col-sm-6">
 											<div class="form-group">
@@ -313,20 +313,20 @@
 										</div>
 									</div>
 									<hr>
-									
+
 									<div class="form-group">
 										<label>{{ __('Brands Area Title') }}</label>
 										<input type="text" name="data[brand][title]" class="form-control" value="{{ $home->brand->title ?? '' }}">
 									</div>
 									<div class="form-group">
 										<label>{{ __('Visibility Of Brand Area') }}</label>
-										
+
 										<select class="form-control" name="data[brand][status]">
 											<option value="active" {{ $brand_area == 'active' ? 'selected' : '' }}>{{ __('Show') }}</option>
 											<option value="inactive" {{ $brand_area == 'inactive' ? 'selected' : '' }}>{{ __('Hide') }}</option>
 										</select>
 									</div>
-									
+
 									<hr>
 
 									<div class="form-group">
@@ -348,7 +348,7 @@
 										<label>{{ __('Features Area Title') }}</label>
 										<input type="text" name="data[features][title]" class="form-control" value="{{ $home->features->title ?? '' }}">
 									</div>
-									
+
 									<div class="form-group">
 										<label>{{ __('Visibility Of Features Area') }}</label>
 										<select class="form-control" name="data[features][status]">
@@ -457,12 +457,12 @@
 										<label>{{ __('Action Button Area Title') }}</label>
 										<input type="text" name="data[about][action_area_title]" class="form-control" value="{{ $home->about->action_area_title ?? '' }}">
 									</div>
-									
+
 									<div class="form-group">
 										<label>{{ __('App About Section cover Image') }}</label>
 										<input type="file" accept="image/*" name="about_cover" class="form-control">
 									</div>
-									
+
 									<hr>
 
 									<div class="form-group">
@@ -477,8 +477,8 @@
 										<label>{{ __('App Faq Section cover Image') }}</label>
 										<input type="file" accept="image/*" name="faq_cover" class="form-control">
 									</div>
-									
-									
+
+
 									<hr>
 									<div class="form-group">
 										<label>{{ __('Integration area title') }}</label>
@@ -502,7 +502,7 @@
 											</div>
 										</div>
 									</div>
-									
+
 
 									<hr>
 									<div class="form-group">
@@ -513,7 +513,7 @@
 										<label>{{ __('Testimonial area cover Image') }}</label>
 										<input type="file" accept="image/*" name="testimonial_cover" class="form-control">
 									</div>
-									
+
 									<hr>
 
 									<div class="form-group">
@@ -528,17 +528,17 @@
 										<label>{{ __('Footer Call To Action Button Link') }}</label>
 										<input type="text" name="data[calltoaction][button_link]" class="form-control" value="{{ $home->calltoaction->button_link ?? '' }}">
 									</div>
-									
-									
+
+
 									<div class="form-group">
 										<button class="btn btn-neutral submit-button">{{ __('Update') }}</button>
 									</div>
-								</form>	
+								</form>
 							</div>
 							<div class="tab-pane fade" id="header-footer" role="tabpanel" aria-labelledby="contact-tab4">
 								<form method="POST" action="{{ route('admin.page-settings.update','header_footer') }}" class="ajaxform" enctype="multipart/form-data">
 									@method('PUT')
-									
+
 									<div class="form-row">
 										<div class="col-sm-6">
 											<div class="form-group">
@@ -557,10 +557,10 @@
 												<label>{{ __('Header announcement link') }}</label>
 												<input type="text" name="header[announcement_link]" class="form-control" value="{{ $headerFooter->header->announcement_link ?? '' }}">
 											</div>
-										</div>	
+										</div>
 									</div>
 
-									
+
 
 									<div class="form-group">
 										<label>{{ __('Footer title') }}</label>
@@ -570,7 +570,7 @@
 										<label>{{ __('Footer Description') }}</label>
 										<input type="text" name="footer[description]" class="form-control" value="{{ $headerFooter->footer->description ?? '' }}" required="">
 									</div>
-									
+
 									<div class="form-row">
 										<div class="col-sm-6">
 											<div class="form-group">
