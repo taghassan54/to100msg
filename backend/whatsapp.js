@@ -85,6 +85,9 @@ const sessions = new Map(),
     return ![];
   },
   createSession = async (_0x504074, _0x54de04 = ![], _0x1ab13f = null) => {
+  console.log(`****************************************************`);
+  console.log(_0x504074,_0x54de04);
+  console.log(`****************************************************`);
     const _0x2d363b = _0x130c,
       _0x426399 =
         (_0x54de04 ? _0x2d363b(0x1d1) : _0x2d363b(0x1c8)) +
