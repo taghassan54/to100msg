@@ -50,8 +50,10 @@ trait Whatsapp
 
         //sending data to whatsapp server
         try {
-            dd($whatsServer.'/chats/send?id='.$session_id,$session_id,$body);
+//            dd($whatsServer.'/chats/send?id='.$session_id,$session_id,$body);
             $response=Http::post($whatsServer.'/chats/send?id='.$session_id,$body);
+
+//            dd($response);
             $status=$response->status();
             $responseBody=json_decode($response->body());
             if ($status != 200) {
@@ -174,7 +176,7 @@ trait Whatsapp
         $body['message']=$formatedBody;
 
         //sending data to whatsapp server
-        dd($formatedBody);
+//        dd($formatedBody);
         try {
             $response=Http::post($whatsServer.'/groups/send?id='.$session_id,$body);
             $status=$response->status();
