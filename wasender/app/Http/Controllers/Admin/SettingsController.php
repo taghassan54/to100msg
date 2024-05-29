@@ -55,9 +55,9 @@ class SettingsController extends Controller
         if ($id == 'primary_data') {
 
            $validated = $request->validate([
-            'logo' => 'image|max:1024',
-            'footer_logo' => 'image|max:1024',
-            'favicon' => 'image|max:500',
+           // 'logo' => 'image|max:1024',
+        //    'footer_logo' => 'image|max:1024',
+          //  'favicon' => 'image|max:500',
            ]);
 
 

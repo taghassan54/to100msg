@@ -68,7 +68,7 @@ class ProfileController extends Controller
                 'phone'     => 'required|numeric|unique:users,phone,'.Auth::id(),
                 'name'      => ['required', 'string','max:100'],
                 'address'   => ['required', 'string','max:150'],
-                'avatar'    => ['image','max:1024'],
+              //  'avatar'    => ['image','max:1024'],
             ]);
 
             $user->name=$request->name;
