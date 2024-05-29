@@ -60,6 +60,12 @@
       <span class="nav-link-text">{{ __('Message Log') }}</span>
     </a>
   </li>
+    <li class="nav-item ">
+        <a class="nav-link {{ Request::is('user/webhooks*') ? 'active' : '' }}" href="{{ url('user/webhooks') }}">
+            <i class="fi fi-rs-chart-connected"></i>
+            <span class="nav-link-text">{{ __('Webhook Logs') }}</span>
+        </a>
+    </li>
 </ul>
 
 

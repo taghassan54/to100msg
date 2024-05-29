@@ -86,6 +86,9 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth','user
    Route::resource('notifications',                      USER\NotificationController::class);
    Route::resource('group',                             USER\GroupController::class);
 
+
+    Route::get('webhooks', [USER\WebhookController::class, 'index']);
+
 });
 
 
