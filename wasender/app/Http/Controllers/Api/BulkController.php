@@ -315,297 +315,149 @@ class BulkController extends Controller
         }
     }
 
-    /**
-     * receive webhook response
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function webHook(Request $request, $device_id)
-    {
-        $session = $device_id;
-        $device_id = str_replace('device_', '', $device_id);
 
-        $device = Device::with('user')->whereHas('user', function ($query) {
-            return $query->where('will_expire', '>', now());
-        })->where('id', $device_id)->first();
 
-        if (!$device)
-            return;
+  /**
+  * receive webhook response
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
+  public function webHook(Request $request,$device_id){
+       
+       $session=$device_id;
+       $device_id=str_replace('device_','',$device_id);
 
-        $request_from = explode('@', $request->from);
-        $request_from = $request_from[0];
+       $device=Device::with('user')->whereHas('user',function($query){
+        return $query->where('will_expire','>',now());
+       })->where('id',$device_id)->first();
+      
+       $request_from=explode('@',$request->from);
+       $request_from=$request_from[0];
 
-        $message_id = $request->message_id ?? null;
-        $message = json_encode($request->message ?? '');
-        $message = json_decode($message);
-
-        $imageMessage = null;
-        $type = "chat";
-
-        // $device_id=$device_id;
-
-        if (isset($message->conversation)) {
+       $message_id=$request->message_id ?? null;
+       $message=json_encode($request->message ?? '');
+       $message=json_decode($message);
+      
+       $device_id=$device_id;
+       
+       if (isset($message->conversation)) {
             $message = $message->conversation ?? null;
-        } elseif (isset($message->extendedTextMessage)) {
-            $extendedTextMessage = $message->extendedTextMessage;
-            $message = $message->extendedTextMessage->text ?? null;
-            $type = "extendedText";
-        } elseif (isset($message->buttonsResponseMessage)) {
-            $message = $message->buttonsResponseMessage->selectedDisplayText ?? null;
-        } elseif (isset($message->listResponseMessage)) {
-            $message = $message->listResponseMessage->title ?? null;
-        } elseif (isset($message->locationMessage)) {
-            $locationMessage = [
-                "degreesLatitude" => $message->locationMessage->degreesLatitude ?? '',
-                "degreesLongitude" => $message->locationMessage->degreesLongitude ?? '',
-                "jpegThumbnail" => $message->locationMessage->jpegThumbnail ?? '',
-            ];
-            $type = "location";
-            // $message = null;
-        } elseif (isset($message->contactsArrayMessage)) {
-            $contactsArrayMessage = $message->contactsArrayMessage ?? null;
-            $type = "contactsArray";
-// $message = null;
-        } elseif (isset($message->reactionMessage)) {
-            $reactionMessage = $message->reactionMessage ?? null;
-            $messageContextInfo = $message->messageContextInfo ?? null;
-            $reaction = [
-                'reactionMessage' => $reactionMessage,
-                'messageContextInfo' => $messageContextInfo,
-            ];
-            $type = "reaction";
-// $message = null;
-        } elseif (isset($message->contactMessage)) {
-            $contactMessage = $message->contactMessage ?? null;
+       }
+       elseif (isset($message->extendedTextMessage)) {
+           $message = $message->extendedTextMessage->text ?? null;
+       }
+       elseif (isset($message->buttonsResponseMessage)) {
+           $message = $message->buttonsResponseMessage->selectedDisplayText ?? null;
+       }
+       elseif (isset($message->listResponseMessage)) {
+           $message = $message->listResponseMessage->title ?? null;
+       }
+       else{
+        $message = null;
+       }
 
-            $type = "contact";
-// $message = null;
-        } elseif (isset($message->audioMessage)) {
+              
+        
+        if($device->webhook_url){
+            $hook = new Webhook;
+            $hook->device_id = $device->id;
+            $hook->user_id = $device->user_id;
+            $hook->payload = json_encode([
+                'payload'=> $request->message ?? '', 
+                'sender'=> $request_from ?? '',
+                'receiver'=> $device->phone ?? '',
+            ]);
+            $hook->hook = $device->webhook_url;
+            $hook->save();
 
-            $type = "audio";
-
-        } elseif (isset($message->videoMessage)) {
-
-            $type = "video";
-
-        } elseif (isset($message->documentMessage)) {
-            $type = "document";
-        } elseif (isset($message->imageMessage)) {
-            // $message = $message->imageMessage->caption ?? null;
-            $type = "image";
-        } elseif (isset($message->stickerMessage)) {
-            $type = "sticker";
-        } elseif (isset($message->pollCreationMessage)) {
-            $pollCreationMessage = $message->pollCreationMessage ?? null;
-            // $message =  null;
-
-            $type = "pollCreation";
-        } elseif (isset($message->pollUpdateMessage)) {
-            $pollUpdateMessage = $message->pollUpdateMessage ?? null;
-            // $message =  null;
-
-            $type = "pollUpdate";
-        } elseif (isset($message->protocolMessage)) {
-            $protocolMessage = $message->protocolMessage ?? null;
-            // $message =  null;
-
-            $type = "protocol";
-        } else {
-            // $message = null;
         }
 
-        if ($device->webhook_url) {
-            try {
+       if ($device != null && $message != null) {
 
+        
 
-                $webhookData["message"] = [
-                    "event_type" => $request->fromMe ? "message_sent" : "message_received",
-                    "instanceId" => $device->uuid,
-                    "data" => [
+         $reply=Reply::where('device_id',$device_id)->with('template')->where('keyword', $message)->where('match_type','equal')->latest()->first();
+           
+          if (empty($reply)) {
+              $messages = explode(' ',$message);
+              if (count($messages) < 50) {
+                 $reply=Reply::where('device_id',$device_id)->where('match_type','!=','equal')->with('template');
 
-                        "id" => $request->from . "_" . $request->message_id,
-                        "message_id" => $request->message_id,
-                        "from" => $request_from,
-                        "to" => $device->phone ?? '',
-                        "type" => $type,
-                        "body" => $message,
-                        //   "locationMessage"=>$locationMessage??null,
-                        //   "contactMessage"=>$contactMessage??null,
-                        //   "contactsArrayMessage"=>$contactsArrayMessage??null,
-                        //   "reactionMessage"=>$reaction??null,
-                        //   "pollCreationMessage"=>$pollCreationMessage??null,
-                        //   "pollUpdateMessage"=>$pollUpdateMessage??null,
-                        //   "extendedTextMessage"=>$extendedTextMessage??null,
-                        //   "protocolMessage"=>$protocolMessage??null,
-                        "media" => $request->media ?? null,
-                        "fromMe" => $request->fromMe,
-                        "isForwarded" => false,
-                        "time" => $request->messageTimestamp,
-                        //'all'=>$request->json()->all(),
+                 $reply = $reply->where(function($query) use ($messages){
+                    for ($i = 0; $i < count($messages); $i++) {
+                      $reply= $query->orWhere("keyword", 'like', '%' . $messages[$i] . '%');
 
-                    ]
-                ];
-                
-                
-                //https://0to100.store/webhook.php
-                $response = Http::withOptions(['verify' => false])->post($device->webhook_url,
-                    $webhookData
-                );
+                   }
+                 });
+                 
 
-                $hook = new Webhook;
-                $hook->device_id = $device->id;
-                $hook->user_id = $device->user_id;
-                // $hook->payload = json_encode($request->message ?? '');
-                $hook->payload = json_encode($webhookData ?? '');
-                $hook->hook = $device->hook_url;
-                $hook->save();
+                $reply= $reply->latest()->first();
+              }
+             
+          }
+          
+         
+          
+          if ($reply != null) {
+               
 
-
-            } catch (\Exception $e) {
-                //throw $th;
-                return response()->json([
-                    'message' => ["text" => 'An error occurred: ' . $e->getMessage()],
-                    'receiver' => "971569501867",
-                    'session_id' => $session
-                ], 200);
-            }
-
-        } else {
-
-
-            info($message);
-
-            if ($request->fromMe) {
-                return response()->json([
-                    'message' => array('text' => null),
+                if ($reply->reply_type == 'text') {
+                  
+                  $logs['user_id']=$device->user_id;
+                  $logs['device_id']=$device->id;
+                  $logs['from']=$device->phone ?? null;
+                  $logs['to']=$request_from;
+                  $logs['type']='chatbot';
+                  $this->saveLog($logs);
+                 
+                 return response()->json([
+                    'message'  => array('text' => $reply->reply),
                     'receiver' => $request->from,
-                    'session_id' => $session,
-                    'reason' => "fromMe"
-                ], 403);
-            }
-            //    dd($device,$message,$device->bot_status);
-            if ($device != null && $message != null && $device->bot_status == '1') {
-                $replies = Reply::where('device_id', $device_id)->with('template')->where('keyword', 'LIKE', '%' . $message . '%')->latest()->get();
+                    'session_id' => $session
+                  ],200);
 
-                if ($message == "#") {
-
-                    try {
-                        return response()->json($this->returnWelcomeResponse($request->from, $session, $device->welcomeMessage), 200);
-
-                    } catch (\Exception $e) {
-                        return response()->json([
-                            'message' => ["text" => 'An error occurred: ' . $e->getMessage()],
-                            'receiver' => "971569501867",
-                            'session_id' => $session
-                        ], 200);
-                    }
-
+                 
                 }
+                else{
+                    if (!empty($reply->template)) {
+                        $template = $reply->template;
 
-                if ($replies->count() == 0) {
+                        if (isset($template->body['text'])) {
+                            $body = $template->body;
+                            $text=$this->formatText($template->body['text'],[],$device->user);
+                            $body['text'] = $text;
+                            
+                        }
+                        else{
+                            $body=$template->body;
+                        }
 
-                    //   return  $this->chat($message,$request->from,$session,$device->id);
-
-
-                    $lastLogRow = Smstransaction::where('to', $request_from)->latest()->first();
-
-                    if ($lastLogRow) {
-
-                        $createdAt = Carbon::parse($lastLogRow->messageTimestamp)->shiftTimezone('Asia/Dubai');
-                        $tenMinutesAgo = Carbon::parse($request->messageTimestamp)->shiftTimezone('Asia/Dubai')->subMinutes((int)$device->resendToMain ?? 5);
-
-                        $logs['user_id'] = $device->user_id;
-                        $logs['device_id'] = $device->id;
-                        $logs['from'] = $device->phone ?? null;
-                        $logs['to'] = $request_from;
-                        $logs['type'] = 'chatbot';
-                        $logs['messageTimestamp'] = $request->messageTimestamp ?? '';
+                        $logs['user_id']=$device->user_id;
+                        $logs['device_id']=$device->id;
+                        $logs['from']=$device->phone ?? null;
+                        $logs['to']=$request_from;
+                        $logs['type']='chatbot';
+                        $logs['template_id']=$template->id ?? null;
                         $this->saveLog($logs);
 
-                        if ($createdAt->lt($tenMinutesAgo)) {
-                            if ($device->welcomeMessageEnable == 1)
-                                return response()->json($this->returnWelcomeResponse($request->from, $session, $device->welcomeMessage), 200);
-                        } else {
-                            if ($device->errorMessageEnable == 1)
-                                return response()->json([
-                                    'message' => ["text" => $device->errorMessage ?? "I don't know this command. To get commands list - return to the menu (#) "],
-                                    'receiver' => $request->from,
-                                    'session_id' => $session
-                                ], 200);
-                        }
-
-                    } else {
-
-                        if ($device->welcomeMessageEnable == 1)
-                            return response()->json($this->returnWelcomeResponse($request->from, $session, $device->welcomeMessage), 200);
-
-                    }
+                        return response()->json([
+                            'message'  => $body,
+                            'receiver' => $request->from,
+                            'session_id' => $session
+                        ],200);
+                    }                    
                 }
-
-
-                foreach ($replies as $key => $reply) {
-                    if ($reply->match_type == 'equal') {
-
-                        if ($reply->reply_type == 'text') {
-
-                            $logs['user_id'] = $device->user_id;
-                            $logs['device_id'] = $device->id;
-                            $logs['from'] = $device->phone ?? null;
-                            $logs['to'] = $request_from;
-                            $logs['type'] = 'chatbot';
-                            $logs['messageTimestamp'] = $request->messageTimestamp ?? '';
-                            $this->saveLog($logs);
-
-                            return response()->json([
-                                'message' => array('text' => $reply->reply),
-                                'receiver' => $request->from,
-                                'session_id' => $session
-                            ], 200);
-
-
-                        } else if ($reply->reply_type == "template") {
-                            if (!empty($reply->template)) {
-                                $template = $reply->template;
-
-                                if (isset($template->body['text'])) {
-                                    $body = $template->body;
-                                    $text = $this->formatText($template->body['text'], [], $device->user);
-                                    $body['text'] = $text;
-
-                                } else {
-                                    $body = $template->body;
-                                }
-
-                                $logs['user_id'] = $device->user_id;
-                                $logs['device_id'] = $device->id;
-                                $logs['from'] = $device->phone ?? null;
-                                $logs['to'] = $request_from;
-                                $logs['type'] = 'chatbot';
-                                $logs['template_id'] = $template->id ?? null;
-                                $logs['messageTimestamp'] = $request->messageTimestamp ?? '';
-                                $this->saveLog($logs);
-
-                                return response()->json([
-                                    'message' => $body,
-                                    'receiver' => $request->from,
-                                    'session_id' => $session
-                                ], 200);
-                            }
-                        } else {
-
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-        return response()->json([
-            'message' => array('text' => null),
+                             
+            
+          }
+       }
+       
+       return response()->json([
+            'message'  => array('text' => null),
             'receiver' => $request->from,
-            'session_id' => $session,
-            'reason' => "no replay"
-        ], 403);
-
+            'session_id' => $session
+          ],403);
+       
     }
 
     public function returnWelcomeResponse($from, $session, $message)
