@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.12",
     "jsonwebtoken": "^9.0.2"
   }
 }
