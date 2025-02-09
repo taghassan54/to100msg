@@ -7,7 +7,7 @@ import getMessages from './../controllers/getMessages.js'
 
 const router = Router()
 
-router.get('/', query('id').notEmpty(), requestValidator, sessionValidator, controller.getList)
+router.get('/', query('sessionId').notEmpty(), requestValidator, sessionValidator, controller.getList)
 
 router.get('/:jid', query('id').notEmpty(), requestValidator, sessionValidator, getMessages)
 

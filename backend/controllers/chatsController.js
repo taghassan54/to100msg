@@ -2,20 +2,21 @@ import { getSession, getChatList, isExists, sendMessage, formatPhone } from './.
 import response from './../response.js'
 
 const getList = (req, res) => {
-    return response(res, 200, true, '', getChatList(res.locals.sessionId))
+    return response(res, 200, true, '', getChatList(req.query.sessionId))
 }
 
 const send = async (req, res) => {
-    const session = getSession(res.locals.sessionId)
+    const session = getSession(req.body.sessionId)
     const receiver = formatPhone(req.body.receiver)
     const delay = req.body.delay
     const { message } = req.body
 
+   
     try {
         const exists = await isExists(session, receiver)
 
         if (!exists) {
-            return response(res, 400, false, 'The receiver number is not exists.')
+          //  return response(res, 400, false, `The receiver number is not exists. ${exists}`)
         }
 
         const sendMessageResponse = await sendMessage(session, receiver, message, delay);

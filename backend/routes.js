@@ -9,10 +9,11 @@ import response from './response.js'
 const router = Router()
 
 router.use('/sessions', sessionsRoute)
-router.use('/chats', chatsRoute)
-router.use('/groups', groupsRoute)
-router.use('/auth', authRoute)
+router.use('/sessions/chats', chatsRoute)
+router.use('/sessions/groups', groupsRoute)
+router.use('/sessions/auth', authRoute)
 router.all('*', (req, res) => {
+   
     response(res, 404, false, 'The requested url cannot be found.')
 })
 

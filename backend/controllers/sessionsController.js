@@ -15,14 +15,17 @@ const findorFail = (req, res) => {
 const status = (req, res) => {
    
     
-    fs.readFile(`sessions/md_${res.locals.sessionId}/creds.json`, function( err, data )
+    fs.readFile(`sessions/md_${req.query.sessionId}/creds.json`, function( err, data )
     {
       if(err) 
       {
             
         const states = ['connecting', 'connected', 'disconnecting', 'disconnected']
 
-        const session = getSession(res.locals.sessionId)
+        const session = getSession(req.query.sessionId)
+
+        if(session==null) return  response(res, 401, true, '', { status: "undefined",valid_session:false })
+
         let state = states[session.ws.readyState]
 
         state =
@@ -35,7 +38,7 @@ const status = (req, res) => {
       else{
        const states = ['connecting', 'connected', 'disconnecting', 'disconnected']
 
-       const session = getSession(res.locals.sessionId)
+       const session = getSession(req.query.sessionId)
        let state = states[session.ws.readyState]
 
        state =
@@ -44,7 +47,7 @@ const status = (req, res) => {
        : state
 
 
-       let rawdata = fs.readFileSync(`sessions/md_${res.locals.sessionId}/creds.json`);
+       let rawdata = fs.readFileSync(`sessions/md_${req.query.sessionId}/creds.json`);
        let userdata = JSON.parse(rawdata);
 
        response(res, 200, true, '', { status: state,valid_session:true,userinfo: userdata.me })
