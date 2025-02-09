@@ -21,3 +21,6 @@ yarn-error.log
 yarn.lock
 .DS_Store
 /backend/.env
+/backend/node_modules
+/backend/node_modules/
+/backend/node_modules/*
